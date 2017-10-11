@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:id="@+id/ll_bg"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_line"
+        android:layout_width="3dp"
+        android:visibility="gone"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:background="@color/main_color"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/tv_sub"
+        android:layout_width="match_parent"
+        android:text="优惠"
+        android:background="@color/label_background_color"
+        android:textColor="@color/text_gray_color"
+        android:gravity="center"
+        android:layout_height="50dp" />
+
+</LinearLayout>

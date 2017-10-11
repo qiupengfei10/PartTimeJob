@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--主要的颜色-->
+    <color name="main_color">#de5a58</color>
+    <!--背景颜色-->
+    <color name="main_background">#fafafa</color>
+    <!--辅助色  标签底色-->
+    <color name="label_background_color">#f3f3f3</color>
+    <!--白色-->
+    <color name="white">#ffffff</color>
+    <!--文字主颜色-->
+    <color name="main_text_color">#262626</color>
+    <!--灰色文字-->
+    <color name="text_gray_color">#828282</color>
+    <!--底部标签的颜色-->
+    <color name="label_text_color">#616161</color>
+    <!--不可点击的颜色-->
+    <color name="un_click_color">#d1d1d1</color>
+    <!--蓝色-->
+    <color name="blue_color">#279AEC</color>
+    <color name="yellow_color">#ffE79E</color>
+
+</resources>

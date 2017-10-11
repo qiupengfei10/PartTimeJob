@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".activity.MainActivity">
+
+    <include
+        android:id="@+id/inc_title"
+        layout="@layout/item_title" />
+
+    <LinearLayout
+        android:layout_below="@+id/inc_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_background"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:id="@+id/scv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/ll_head"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp">
+
+                        <android.support.v4.view.ViewPager
+                            android:id="@+id/vp_banner"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:background="@color/text_gray_color"></android.support.v4.view.ViewPager>
+
+                        <LinearLayout
+                            android:id="@+id/ll_dot"
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginBottom="10dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_height="wrap_content">
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:background="@color/label_background_color"
+                        android:padding="1dp">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@color/white">
+
+                            <TextView
+                                android:id="@+id/tv_main_title1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:text="零食部落"
+                                android:textColor="@color/main_text_color"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_sub_title1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_main_title1"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:text="人气零食7折起"
+                                android:textColor="@color/text_gray_color"
+                                android:textSize="12sp" />
+
+                            <ImageView
+                                android:id="@+id/iv_image1"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_centerHorizontal="true"
+                                android:scaleType="centerCrop"
+                                android:layout_marginBottom="10dp"
+                                android:layout_alignParentBottom="true"
+                                android:src="@mipmap/ic_launcher" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/white">
+
+                            <TextView
+                                android:id="@+id/tv_main_title2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:text="天天特价"
+                                android:textColor="@color/main_text_color"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_sub_title2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_main_title2"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:text="超级单品1折起"
+                                android:textColor="@color/text_gray_color"
+                                android:textSize="12sp" />
+                            <ImageView
+                                android:id="@+id/iv_image2"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_centerHorizontal="true"
+                                android:scaleType="centerCrop"
+                                android:layout_marginBottom="10dp"
+                                android:layout_alignParentBottom="true"
+                                android:src="@mipmap/ic_launcher" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/white">
+
+                            <TextView
+                                android:id="@+id/tv_main_title3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:text="超级新鲜季"
+                                android:textColor="@color/main_text_color"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_sub_title3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_main_title3"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:text="冰爽西瓜吃一夏"
+                                android:textColor="@color/text_gray_color"
+                                android:textSize="12sp" />
+
+                            <ImageView
+                                android:id="@+id/iv_image3"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_centerHorizontal="true"
+                                android:scaleType="centerCrop"
+                                android:layout_marginBottom="10dp"
+                                android:layout_alignParentBottom="true"
+                                android:src="@mipmap/ic_launcher" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/label_background_color"
+                    android:orientation="horizontal"
+                    android:padding="1dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:text="综合排序"
+                        android:textColor="@color/text_gray_color" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:text="距离最近"
+                        android:textColor="@color/main_text_color"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="40dp"
+                        android:paddingRight="40dp"
+                        android:textColor="@color/text_gray_color" />
+
+                    <TextView
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginTop="3dp"
+                        android:background="@color/label_background_color" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:text="筛选"
+                        android:textColor="@color/text_gray_color" />
+                </LinearLayout>
+
+
+                <com.zhitou.job.parttimejob.view.UnScrollListView
+                    android:id="@+id/ulv_shop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></com.zhitou.job.parttimejob.view.UnScrollListView>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_menu_top"
+        android:visibility="gone"
+        android:layout_below="@+id/inc_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/label_background_color"
+        android:orientation="horizontal"
+        android:padding="1dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="综合排序"
+            android:textColor="@color/text_gray_color" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="距离最近"
+            android:textColor="@color/main_text_color"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:textColor="@color/text_gray_color" />
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp"
+            android:background="@color/label_background_color" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="筛选"
+            android:textColor="@color/text_gray_color" />
+    </LinearLayout>
+</RelativeLayout>
