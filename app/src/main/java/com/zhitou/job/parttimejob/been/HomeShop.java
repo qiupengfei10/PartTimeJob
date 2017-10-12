@@ -1,5 +1,6 @@
 package com.zhitou.job.parttimejob.been;
 
+import java.io.Serializable;
 import java.util.List;
 
 import cn.bmob.v3.BmobObject;
@@ -9,7 +10,7 @@ import cn.bmob.v3.BmobObject;
  *
  * 首页的店铺
  */
-public class HomeShop extends BmobObject{
+public class HomeShop extends BmobObject implements Serializable{
     private String shop_logo;//商店logo
     private String shopName;//店名
     private String sale;//月销量

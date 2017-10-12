@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="2dp"
+    android:paddingTop="2dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/tv_key_word"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:background="@drawable/shape_main_blue"
+        android:gravity="center"
+        android:text="首"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:layout_marginLeft="5dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:singleLine="true"
+        android:text="新用户下单立减20"
+        android:textSize="12sp" />
+</LinearLayout>

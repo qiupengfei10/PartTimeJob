@@ -170,12 +170,6 @@ public class MainActivity extends FragmentActivity {
             });
         }
 
-        mUlvShop.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(MainActivity.this,ShopMainActivity.class));
-            }
-        });
     }
 
     private void setDocCheck(int position) {
@@ -223,10 +217,38 @@ public class MainActivity extends FragmentActivity {
             }
         });
 
+        //为商店上传商品分类
+//        ProductClassify productClassify = new ProductClassify();
+//        productClassify.setSubject("饮料");
+//        productClassify.setShop_id("RJcm1118");
+//        List<Product> products = new ArrayList<>();
+//
+//        Product product = new Product();
+//        product.setShop_id("RJcm1118");
+//        product.setClassify_id(productClassify.getObjectId());
+//        product.setName("雪碧");
+//        product.setImage_url("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2141856011,3445730211&fm=27&gp=0.jpg");
+//        product.setStatus("雪碧-雪碧诞生于1961年,1984年正式进入中国。作为柠檬口味碳酸饮料的领导品牌,雪碧畅销于190多个国家,是世界排名第4的碳酸饮料。");
+//        product.setPrice(3.00);
+//        products.add(product);
+//
+//        productClassify.setProducts(products);
+//
+//        productClassify.save(new SaveListener<String>() {
+//            @Override
+//            public void done(String s, BmobException e) {
+//                if (e == null){
+//                    Log.e("qpf","成功");
+//                }else {
+//                    Log.e("qpf","失败" + e.toString());
+//                }
+//            }
+//        });
+
 
 
 //        //上传一个商店
-//        HomeShop shop = new HomeShop("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3245281083,1654430883&fm=27&gp=0.jpg","邱鹏飞开的店");
+//        HomeShop shop = new HomeShop("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3245281083,1654430883&fm=27&gp=0.jpg","啤酒和炸鸡");
 //        ShopDiscounts discounts = new ShopDiscounts();
 //        discounts.setKey_word("满");
 //        discounts.setType(0);
@@ -235,6 +257,23 @@ public class MainActivity extends FragmentActivity {
 //        discounts.setMin_price("20");
 //        List<ShopDiscounts> discountses = new ArrayList<>();
 //        discountses.add(discounts);
+//
+//        ShopDiscounts discounts1 = new ShopDiscounts();
+//        discounts1.setKey_word("新");
+//        discounts1.setType(1);
+//        discounts1.setDiscounts_price("100");
+//        discounts1.setStatus("新用户立减5元");
+//        discounts1.setMin_price("20");
+//        discountses.add(discounts1);
+//
+//        ShopDiscounts discounts2 = new ShopDiscounts();
+//        discounts2.setKey_word("券");
+//        discounts2.setType(2);
+//        discounts2.setDiscounts_price("100");
+//        discounts2.setStatus("满100送20元的代金券");
+//        discounts2.setMin_price("20");
+//        discountses.add(discounts2);
+//
 //        shop.setDiscountsList(discountses);
 //
 //        shop.save(new SaveListener<String>() {

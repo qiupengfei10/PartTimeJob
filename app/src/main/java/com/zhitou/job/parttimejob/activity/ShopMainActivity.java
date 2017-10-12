@@ -26,12 +26,18 @@ import com.zhitou.job.parttimejob.R;
 import com.zhitou.job.parttimejob.adapter.ShopMainAdapter;
 import com.zhitou.job.parttimejob.adapter.SubAdapter;
 import com.zhitou.job.parttimejob.adapter.ProductAdapter;
+import com.zhitou.job.parttimejob.been.HomeShop;
 import com.zhitou.job.parttimejob.been.Point;
 import com.zhitou.job.parttimejob.been.Product;
 import com.zhitou.job.parttimejob.been.ProductClassify;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 
 /**
  * 主页
@@ -59,6 +65,9 @@ public class ShopMainActivity extends AppCompatActivity {
 
     private List<Product> mShopBus = new ArrayList<>();
 
+    private HomeShop shop;
+
+    private List<ProductClassify> classifyList;
 
     private int num = 0;
     private Handler handlder = new Handler() {
@@ -84,6 +93,7 @@ public class ShopMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_main);
+        shop = (HomeShop) getIntent().getSerializableExtra("shop");
         initView();
         initData();
         setClick();
@@ -119,8 +129,22 @@ public class ShopMainActivity extends AppCompatActivity {
     }
 
     private void initData() {
+        //获取分类列表
         subs = new ArrayList<>();
         products = new ArrayList<>();
+        BmobQuery<ProductClassify> query = new BmobQuery<>();
+        query.addWhereEqualTo("shop_id",shop.getObjectId());
+        query.findObjects(new FindListener<ProductClassify>() {
+            @Override
+            public void done(List<ProductClassify> list, BmobException e) {
+                if (e == null){
+
+                }
+            }
+        });
+
+
+
 
         subs.add("巧乐滋系列");
         subs.add("冰红茶系列");

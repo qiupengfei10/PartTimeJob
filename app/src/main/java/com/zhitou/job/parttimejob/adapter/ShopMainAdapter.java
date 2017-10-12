@@ -21,9 +21,6 @@ public class ShopMainAdapter extends MyBaseAdapter<ProductClassify> {
 
     private Handler handler;
 
-    public ShopMainAdapter(Context context, List<ProductClassify> data) {
-        super(context, data);
-    }
     public ShopMainAdapter(Context context, List<ProductClassify> data,Handler handler) {
         super(context, data);
         this.handler = handler;

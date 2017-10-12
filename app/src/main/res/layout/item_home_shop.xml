@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:padding="10dp"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:padding="10dp">
+    >
 
     <ImageView
         android:id="@+id/iv_shop_logo"
@@ -123,55 +124,45 @@
             android:layout_marginTop="5dp"
             android:background="@color/label_background_color" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:orientation="horizontal">
-
+            android:layout_height="wrap_content">
+            <!--优惠活动-->
+            <com.zhitou.job.parttimejob.view.UnScrollListView
+                android:id="@+id/ulv_favorable"
+                android:layout_width="match_parent"
+                android:layout_toLeftOf="@+id/tv_discounts_num"
+                android:divider="@null"
+                android:layout_marginRight="5dp"
+                android:layout_height="match_parent"/>
+            <!--<LinearLayout-->
+                <!--android:id="@+id/ll_favorable"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_toLeftOf="@+id/tv_discounts_num"-->
+                <!--android:layout_height="wrap_content"></LinearLayout>-->
             <TextView
-                android:id="@+id/tv_jian"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:background="@drawable/shape_main"
-                android:gravity="center"
-                android:text="减"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-
-            <TextView
+                android:id="@+id/tv_discounts_num"
+                android:textSize="12sp"
                 android:layout_width="wrap_content"
-                android:layout_height="15dp"
-                android:layout_marginLeft="5dp"
-                android:ellipsize="end"
-                android:gravity="center"
-                android:singleLine="true"
-                android:text="在线支付满60减8，满100减去15，满298减30"
-                android:textSize="12sp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:orientation="horizontal">
+                android:text="12个活动"
+                android:layout_toLeftOf="@+id/iv_invest_down_off"
+                android:layout_gravity="right"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="3dp"
+                android:layout_height="wrap_content" />
 
-            <TextView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:background="@drawable/shape_main_blue"
-                android:gravity="center"
-                android:text="首"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
+            <ImageView
+                android:id="@+id/iv_invest_down_off"
+                android:layout_width="10dp"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/invest_down_off"
+                android:layout_height="10dp" />
+        </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="15dp"
-                android:layout_marginLeft="5dp"
-                android:ellipsize="end"
-                android:gravity="center"
-                android:singleLine="true"
-                android:text="新用户下单立减20"
-                android:textSize="12sp" />
-        </LinearLayout>
+
 
     </LinearLayout>
 

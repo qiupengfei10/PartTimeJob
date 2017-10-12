@@ -2,19 +2,32 @@ package com.zhitou.job.parttimejob.been;
 
 import java.util.List;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * Created by qiupengfei on 2017/6/26.
  *
  * 商品分类
  */
-public class ProductClassify {
-    //种类
-    private String subject;
-    //商品
-    private List<Product> products;
+public class ProductClassify extends BmobObject{
+    private String shop_id; // 商店id
+
+    private String subject; // 分类名称
+
+    private List<Product> products; // 商品
+
+    public String getShop_id() {
+        return shop_id;
+    }
+
+    public void setShop_id(String shop_id) {
+        this.shop_id = shop_id;
+    }
 
     public ProductClassify(String subject) {
         this.subject = subject;
+    }
+    public ProductClassify() {
     }
 
     public String getSubject() {
