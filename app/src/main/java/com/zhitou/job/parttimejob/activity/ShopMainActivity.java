@@ -1,9 +1,13 @@
 package com.zhitou.job.parttimejob.activity;
 
 import android.annotation.TargetApi;
+import android.database.sqlite.SQLiteStatement;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.style.ForegroundColorSpan;
@@ -22,14 +26,18 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.zhitou.job.parttimejob.R;
 import com.zhitou.job.parttimejob.adapter.ShopMainAdapter;
 import com.zhitou.job.parttimejob.adapter.SubAdapter;
 import com.zhitou.job.parttimejob.adapter.ProductAdapter;
+import com.zhitou.job.parttimejob.base.BaseFragmentList;
 import com.zhitou.job.parttimejob.been.HomeShop;
 import com.zhitou.job.parttimejob.been.Point;
 import com.zhitou.job.parttimejob.been.Product;
 import com.zhitou.job.parttimejob.been.ProductClassify;
+import com.zhitou.job.parttimejob.fragments.FragmentProductList;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -42,32 +50,23 @@ import cn.bmob.v3.listener.FindListener;
 /**
  * 主页
  */
-public class ShopMainActivity extends AppCompatActivity {
+public class ShopMainActivity extends FragmentActivity {
+    private ImageView mIvShopLogo;
+    private TextView mTvShopName;
 
-    private RelativeLayout mRlBackground;
-    private ScrollView mSrvContent;
-    private ListView mUlvSub;
-    private ListView mUlvContent;
-    private TextView mTvSubject;
+    private ListView mUlvSub;      //种类列表
+    private TextView mTvSubject;   //商品种类
 
-    private List<String> subs;
-    private List<ProductClassify> products;
+    private List<ProductClassify> classifyList = new ArrayList<>();
+    private List<Product> productList = new ArrayList<>();
 
 
     //当前选中的一级菜单
     private View currentSelecetView;
 
-    private LinearLayout mllBg;
-
-    private ImageView mIvShopBus;
-
     private TextView mtvBusQuantity; //购物车中商品的数量
 
-    private List<Product> mShopBus = new ArrayList<>();
-
     private HomeShop shop;
-
-    private List<ProductClassify> classifyList;
 
     private int num = 0;
     private Handler handlder = new Handler() {
@@ -83,7 +82,7 @@ public class ShopMainActivity extends AppCompatActivity {
                     }
 
                     //将选中的商品加入购物车
-                    mShopBus.add(products.get(msg.arg1).getProducts().get(msg.what));
+//                    mShopBus.add(products.get(msg.arg1).getProducts().get(msg.what));
                     break;
             }
         }
@@ -99,102 +98,53 @@ public class ShopMainActivity extends AppCompatActivity {
         setClick();
     }
 
-    private void setClick() {
-
-        mUlvContent.setOnScrollListener(new AbsListView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
-
-            }
-
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                Log.e("qpf", "可见的第一个item:" + firstVisibleItem);
-                //可见的第一个item
-                mTvSubject.setText(products.get(firstVisibleItem).getSubject());
-                mUlvSub.smoothScrollToPositionFromTop(firstVisibleItem, 0, 300);
-                setSelectedStatus(firstVisibleItem);
-            }
-        });
-
-        mUlvSub.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                setSelectedStatus(position);
-                mUlvContent.setSelection(position);
-            }
-        });
-
-
-    }
-
     private void initData() {
+        mTvShopName.setText(shop.getShopName());
+        Glide.with(this).load(shop.getShop_logo()).diskCacheStrategy(DiskCacheStrategy.NONE).into(mIvShopLogo);
+
         //获取分类列表
-        subs = new ArrayList<>();
-        products = new ArrayList<>();
         BmobQuery<ProductClassify> query = new BmobQuery<>();
         query.addWhereEqualTo("shop_id",shop.getObjectId());
         query.findObjects(new FindListener<ProductClassify>() {
             @Override
             public void done(List<ProductClassify> list, BmobException e) {
-                if (e == null){
-
+                if (e == null || list == null || list.size() == 0){
+                    classifyList = list;
+                    mUlvSub.setAdapter(new SubAdapter(ShopMainActivity.this,classifyList));
+                    fragments = new Fragment[list.size()];
+                    showFragment(0);
+                    mUlvSub.setSelection(0);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            setSelectedStatus(0);
+                        }
+                    },200);
                 }
             }
         });
 
 
+    }
+
+    private void setClick() {
+        mUlvSub.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                setSelectedStatus(position);
+                showFragment(position);
+            }
+        });
 
 
-        subs.add("巧乐滋系列");
-        subs.add("冰红茶系列");
-        subs.add("康师傅系列");
-        subs.add("麦当劳");
-        subs.add("坑德基");
-        subs.add("统一系列");
-        subs.add("小米系列");
-        subs.add("魅族系列");
-        subs.add("华为系列");
-        subs.add("三星系列");
-        subs.add("诺基亚系列");
-
-        products.add(new ProductClassify("巧乐滋系列"));
-        products.add(new ProductClassify("冰红茶系列"));
-        products.add(new ProductClassify("康师傅系列"));
-        products.add(new ProductClassify("麦当劳"));
-        products.add(new ProductClassify("坑德基"));
-        products.add(new ProductClassify("统一系列"));
-        products.add(new ProductClassify("小米系列"));
-        products.add(new ProductClassify("魅族系列"));
-        products.add(new ProductClassify("华为系列"));
-        products.add(new ProductClassify("三星系列"));
-        products.add(new ProductClassify("诺基亚系列"));
-
-
-        for (ProductClassify product : products) {
-            product.setProducts(new ArrayList<Product>());
-            product.getProducts().add(new Product());
-            product.getProducts().add(new Product());
-            product.getProducts().add(new Product());
-            product.getProducts().add(new Product());
-            product.getProducts().add(new Product());
-            product.getProducts().add(new Product());
-        }
-
-        mUlvContent.setAdapter(new ShopMainAdapter(this, products, handlder));
-
-        mUlvSub.setAdapter(new SubAdapter(this, subs));
-        mllBg = (LinearLayout) findViewById(R.id.ll_bg);
     }
 
     @TargetApi(Build.VERSION_CODES.M)
     private void initView() {
-        mRlBackground = (RelativeLayout) findViewById(R.id.rl_background);
+        mIvShopLogo = (ImageView) findViewById(R.id.iv_shop_logo);
+        mTvShopName = (TextView) findViewById(R.id.tv_shop_name);
         mUlvSub = (ListView) findViewById(R.id.lv_sub_table);
-        mUlvContent = (ListView) findViewById(R.id.lv_content);
         mTvSubject = (TextView) findViewById(R.id.tv_subject);
-        mIvShopBus = (ImageView) findViewById(R.id.iv_shop_bus);
-
         mtvBusQuantity = (TextView) findViewById(R.id.tv_bus_quantity);
     }
 
@@ -204,11 +154,12 @@ public class ShopMainActivity extends AppCompatActivity {
      * @param position
      */
     public void setSelectedStatus(int position) {
+        Log.e("qpf","第" + position + "个");
+        mTvSubject.setText(classifyList.get(position).getSubject());
         //找到第一个可见的
-        int firstPosition = mUlvSub.getFirstVisiblePosition();
-        position = position - firstPosition;
         View view = mUlvSub.getChildAt(position);
         if (view == null) {
+            Log.e("qpf","view为null");
             return;
         }
         //先将其他的置为未选中状态
@@ -224,5 +175,22 @@ public class ShopMainActivity extends AppCompatActivity {
         tvName.setTextColor(getResources().getColor(R.color.main_color));
         view.findViewById(R.id.tv_line).setVisibility(View.VISIBLE);
         currentSelecetView = view;
+    }
+
+    private Fragment[] fragments;
+    public void showFragment(int index){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        for (Fragment fragment : fragments) {
+            if (fragment != null){
+                transaction.hide(fragment);
+            }
+        }
+        if (fragments[index] == null){
+            fragments[index] = (new FragmentProductList("classify_id",classifyList.get(index).getObjectId()));
+            transaction.add(R.id.fl_content,fragments[index]);
+        }else {
+            transaction.show(fragments[index]);
+        }
+        transaction.commit();
     }
 }

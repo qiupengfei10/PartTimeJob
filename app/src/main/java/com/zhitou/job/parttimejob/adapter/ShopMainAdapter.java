@@ -39,7 +39,7 @@ public class ShopMainAdapter extends MyBaseAdapter<ProductClassify> {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.mUlvProduct.setAdapter(new ProductAdapter(context,data.get(position).getProducts(),handler));
+//        holder.mUlvProduct.setAdapter(new ProductAdapter(context,data.get(position).getProducts(),handler));
         holder.mTvTitle.setText(data.get(position).getSubject());
 
         return convertView;

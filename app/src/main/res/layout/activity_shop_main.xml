@@ -6,9 +6,10 @@
     tools:context=".activity.ShopMainActivity">
 
     <LinearLayout
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/rl_bottom_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/rl_bottom_menu"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -38,6 +39,7 @@
                 <ImageView
                     android:id="@+id/iv_shop_logo"
                     android:layout_width="50dp"
+                    android:layout_margin="8dp"
                     android:layout_height="50dp"
                     android:src="@mipmap/ic_launcher" />
 
@@ -118,6 +120,7 @@
             <ListView
                 android:id="@+id/lv_sub_table"
                 android:layout_width="0dp"
+                android:layout_gravity="center_vertical"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:divider="@null"
@@ -137,14 +140,14 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
                     android:text="巧乐滋系列"
-                    android:visibility="gone" />
+                     />
 
-                <ListView
-                    android:id="@+id/lv_content"
+                <!--商品列表-->
+                <FrameLayout
+                    android:id="@+id/fl_content"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:divider="@null"
-                    android:scrollbars="none"></ListView>
+                    android:background="@color/blue_color"
+                    android:layout_height="match_parent"></FrameLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -250,6 +253,7 @@
 
     <LinearLayout
         android:id="@+id/ll_bg"
+        android:visibility="gone"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></LinearLayout>

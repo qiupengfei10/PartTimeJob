@@ -1,7 +1,6 @@
 package com.zhitou.job.parttimejob.activity;
 
 import android.annotation.TargetApi;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,7 +12,6 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -217,23 +215,152 @@ public class MainActivity extends FragmentActivity {
             }
         });
 
-        //为商店上传商品分类
+//        String[] names = new String[]{"日常用品","饮料","干粮","水果","精神粮食","玩具"};
+//        int i = 0;
+//        for (String name:names) {
+//            ProductClassify classify = new ProductClassify();
+//            classify.setShop_id("48ML555a");
+//            classify.setSubject(name);
+//            classify.setIndex(i);
+//            i++;
+//            classify.save(new SaveListener<String>() {
+//                @Override
+//                public void done(String s, BmobException e) {
+//                    if (e == null){
+//                        Log.e("qpf","上传成功");
+//                    }else {
+//                        Log.e("qpf","上传失败" + e.toString());
+//                    }
+//                }
+//            });
+//        }
+
+
+////        为商店上传商品分类
 //        ProductClassify productClassify = new ProductClassify();
 //        productClassify.setSubject("饮料");
-//        productClassify.setShop_id("RJcm1118");
+//        productClassify.setShop_id("48ML555a");
 //        List<Product> products = new ArrayList<>();
 //
-//        Product product = new Product();
-//        product.setShop_id("RJcm1118");
-//        product.setClassify_id(productClassify.getObjectId());
-//        product.setName("雪碧");
-//        product.setImage_url("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2141856011,3445730211&fm=27&gp=0.jpg");
-//        product.setStatus("雪碧-雪碧诞生于1961年,1984年正式进入中国。作为柠檬口味碳酸饮料的领导品牌,雪碧畅销于190多个国家,是世界排名第4的碳酸饮料。");
-//        product.setPrice(3.00);
-//        products.add(product);
+//        String image[] = new String[]{
+//                "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2141856011,3445730211&fm=27&gp=0.jpg",
+//                "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2141856011,3445730211&fm=27&gp=0.jpg",
+//                "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2141856011,3445730211&fm=27&gp=0.jpg",
+//                "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2141856011,3445730211&fm=27&gp=0.jpg",
+//                "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2141856011,3445730211&fm=27&gp=0.jpg",
+//                "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2141856011,3445730211&fm=27&gp=0.jpg",
+//                "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2141856011,3445730211&fm=27&gp=0.jpg"
+//        };
 //
+//        for (String name :
+//                image) {
+//            Product product = new Product();
+//            product.setShop_id("48ML555a");
+//            product.setClassify_id("35fbdc3e65");
+//            product.setName("雪碧");
+//            product.setImage_url(name);
+//            product.setStatus("雪碧-雪碧诞生于1961年,1984年正式进入中国。作为柠檬口味碳酸饮料的领导品牌,雪碧畅销于190多个国家,是世界排名第4的碳酸饮料。");
+//            product.setPrice(3.00);
+//            product.save(new SaveListener<String>() {
+//                @Override
+//                public void done(String s, BmobException e) {
+//                    if (e == null){
+//                    Log.e("qpf","成功");
+//                }else {
+//                    Log.e("qpf","失败" + e.toString());
+//                }
+//                }
+//            });
+//        }
+
+//
+//        Product product1 = new Product();
+//        product1.setShop_id("48ML555a");
+//        product1.setClassify_id(productClassify.getObjectId());
+//        product1.setName("百事可乐");
+//        product1.setImage_url("https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1507863128&di=5fd56a9a82995e2f617f27f231c37d6a&src=http://cx.txa.cc/lingshi/yinliao/1416208054407.jpg");
+//        product1.setStatus("百事可乐-百事可乐诞生于1961年,1984年正式进入中国。作为柠檬口味碳酸饮料的领导品牌,雪碧畅销于190多个国家,是世界排名第4的碳酸饮料。");
+//        product1.setPrice(3.00);
+//        products.add(product1);
+//
+//        Product product2 = new Product();
+//        product2.setShop_id("48ML555a");
+//        product2.setClassify_id(productClassify.getObjectId());
+//        product2.setName("百事可乐");
+//        product2.setImage_url("https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1507863128&di=5fd56a9a82995e2f617f27f231c37d6a&src=http://cx.txa.cc/lingshi/yinliao/1416208054407.jpg");
+//        product2.setStatus("百事可乐-百事可乐诞生于1961年,1984年正式进入中国。作为柠檬口味碳酸饮料的领导品牌,雪碧畅销于190多个国家,是世界排名第4的碳酸饮料。");
+//        product2.setPrice(3.00);
 //        productClassify.setProducts(products);
 //
+//
+//        productClassify.save(new SaveListener<String>() {
+//            @Override
+//            public void done(String s, BmobException e) {
+//                if (e == null){
+//                    Log.e("qpf","成功");
+//                }else {
+//                    Log.e("qpf","失败" + e.toString());
+//                }
+//            }
+//        });
+//
+//
+//        productClassify.setSubject("考试神器");
+//        productClassify.save(new SaveListener<String>() {
+//            @Override
+//            public void done(String s, BmobException e) {
+//                if (e == null){
+//                    Log.e("qpf","成功");
+//                }else {
+//                    Log.e("qpf","失败" + e.toString());
+//                }
+//            }
+//        });
+//        productClassify.setSubject("精神粮食");
+//        productClassify.save(new SaveListener<String>() {
+//            @Override
+//            public void done(String s, BmobException e) {
+//                if (e == null){
+//                    Log.e("qpf","成功");
+//                }else {
+//                    Log.e("qpf","失败" + e.toString());
+//                }
+//            }
+//        });
+//        productClassify.setSubject("学习用品");
+//        productClassify.save(new SaveListener<String>() {
+//            @Override
+//            public void done(String s, BmobException e) {
+//                if (e == null){
+//                    Log.e("qpf","成功");
+//                }else {
+//                    Log.e("qpf","失败" + e.toString());
+//                }
+//            }
+//        });
+//        productClassify.setSubject("寝室必备");
+//        productClassify.save(new SaveListener<String>() {
+//            @Override
+//            public void done(String s, BmobException e) {
+//                if (e == null){
+//                    Log.e("qpf","成功");
+//                }else {
+//                    Log.e("qpf","失败" + e.toString());
+//                }
+//            }
+//        });
+//        productClassify.setSubject("干粮");
+//        productClassify.save(new SaveListener<String>() {
+//            @Override
+//            public void done(String s, BmobException e) {
+//                if (e == null){
+//                    Log.e("qpf","成功");
+//                }else {
+//                    Log.e("qpf","失败" + e.toString());
+//                }
+//            }
+//        });
+//        productClassify.setSubject("日常用品");
 //        productClassify.save(new SaveListener<String>() {
 //            @Override
 //            public void done(String s, BmobException e) {

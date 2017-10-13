@@ -6,16 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.zhitou.job.parttimejob.base.MyBaseAdapter;
 import com.zhitou.job.parttimejob.R;
+import com.zhitou.job.parttimejob.base.MyBaseAdapter;
+import com.zhitou.job.parttimejob.been.ProductClassify;
 
 import java.util.List;
 
 /**
  * Created by qiupengfei on 2017/6/23.
  */
-public class SubAdapter extends MyBaseAdapter<String> {
-    public SubAdapter(Context context, List<String> data) {
+public class SubAdapter extends MyBaseAdapter<ProductClassify> {
+    public SubAdapter(Context context, List<ProductClassify> data) {
         super(context, data);
     }
 
@@ -30,7 +31,10 @@ public class SubAdapter extends MyBaseAdapter<String> {
         }else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.mTvSub.setText(data.get(position));
+
+        ProductClassify info = data.get(position);
+
+        holder.mTvSub.setText(info.getSubject());
         return convertView;
     }
 

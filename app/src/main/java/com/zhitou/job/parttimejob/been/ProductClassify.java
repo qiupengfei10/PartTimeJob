@@ -10,14 +10,24 @@ import cn.bmob.v3.BmobObject;
  * 商品分类
  */
 public class ProductClassify extends BmobObject{
+
+    private int index;  // 序号
+
     private String shop_id; // 商店id
 
     private String subject; // 分类名称
 
-    private List<Product> products; // 商品
 
     public String getShop_id() {
         return shop_id;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 
     public void setShop_id(String shop_id) {
@@ -38,11 +48,5 @@ public class ProductClassify extends BmobObject{
         this.subject = subject;
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
 }

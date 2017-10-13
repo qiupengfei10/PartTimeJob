@@ -9,7 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.zhitou.job.parttimejob.base.MyBaseAdapter;
 import com.zhitou.job.parttimejob.R;
 import com.zhitou.job.parttimejob.been.Point;
@@ -39,10 +42,18 @@ public class ProductAdapter extends MyBaseAdapter<Product> {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_product,null);
             holder = new ViewHolder();
             holder.mIvAdd = (ImageView) convertView.findViewById(R.id.iv_add_shop_bus);
+            holder.mIvProductImage = (ImageView) convertView.findViewById(R.id.iv_product_image);
+            holder.mTvProductName = (TextView) convertView.findViewById(R.id.tv_product_title);
+            holder.mTvProductPrice = (TextView) convertView.findViewById(R.id.tv_price);
             convertView.setTag(holder);
         }else {
             holder = (ViewHolder) convertView.getTag();
         }
+
+        Product info = data.get(position);
+        Glide.with(context).load(info.getImage_url()).diskCacheStrategy(DiskCacheStrategy.NONE).into(holder.mIvProductImage);
+        holder.mTvProductName.setText(info.getName());
+        holder.mTvProductPrice.setText("￥" + info.getPrice());
 
         holder.mIvAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +75,9 @@ public class ProductAdapter extends MyBaseAdapter<Product> {
     }
 
     class ViewHolder{
-        ImageView mIvAdd;
+        private ImageView mIvAdd;
+        private ImageView mIvProductImage;
+        private TextView mTvProductName;
+        private TextView mTvProductPrice;
     }
 }

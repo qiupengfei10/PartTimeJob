@@ -69,4 +69,17 @@ public class Product extends BmobObject{
     public void setSale(int sale) {
         this.sale = sale;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "shop_id='" + shop_id + '\'' +
+                ", classify_id='" + classify_id + '\'' +
+                ", image_url='" + image_url + '\'' +
+                ", name='" + name + '\'' +
+                ", status='" + status + '\'' +
+                ", price=" + price +
+                ", sale=" + sale +
+                '}';
+    }
 }
