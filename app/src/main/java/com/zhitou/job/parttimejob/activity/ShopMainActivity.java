@@ -108,7 +108,7 @@ public class ShopMainActivity extends FragmentActivity {
         query.findObjects(new FindListener<ProductClassify>() {
             @Override
             public void done(List<ProductClassify> list, BmobException e) {
-                if (e == null || list == null || list.size() == 0){
+                if (e == null && list != null && list.size() != 0){
                     classifyList = list;
                     mUlvSub.setAdapter(new SubAdapter(ShopMainActivity.this,classifyList));
                     fragments = new Fragment[list.size()];

@@ -45,6 +45,8 @@ public class ProductAdapter extends MyBaseAdapter<Product> {
             holder.mIvProductImage = (ImageView) convertView.findViewById(R.id.iv_product_image);
             holder.mTvProductName = (TextView) convertView.findViewById(R.id.tv_product_title);
             holder.mTvProductPrice = (TextView) convertView.findViewById(R.id.tv_price);
+            holder.mTvStatus = (TextView) convertView.findViewById(R.id.tv_status);
+            holder.mTvSale = (TextView) convertView.findViewById(R.id.tv_sale);
             convertView.setTag(holder);
         }else {
             holder = (ViewHolder) convertView.getTag();
@@ -55,21 +57,11 @@ public class ProductAdapter extends MyBaseAdapter<Product> {
         holder.mTvProductName.setText(info.getName());
         holder.mTvProductPrice.setText("￥" + info.getPrice());
 
-        holder.mIvAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Message msg = Message.obtain();
-                int[] fs = new int[2];
-                holder.mIvAdd.getLocationOnScreen(fs);
-                msg.what = 0;
-                msg.arg1 = position;//第几个商品
-//                msg.arg1 = holder.mIvAdd.getWidth(); //x轴
-//                msg.arg2 = holder.mIvAdd.getHeight(); //y轴
-//                msg.obj = new Point(fs[0],fs[1]);
-                handler.sendMessage(msg);
-//                Log.e("qpf","加号的位置坐标 (" + fs[0] + "," + fs[1] + ")");
-            }
-        });
+        holder.mTvSale.setText("销量" + info.getSale());
+        if (info.getStatus() != null)
+        holder.mTvStatus.setText(info.getStatus());
+        else
+        holder.mTvStatus.setVisibility(View.GONE);
 
         return convertView;
     }
@@ -79,5 +71,8 @@ public class ProductAdapter extends MyBaseAdapter<Product> {
         private ImageView mIvProductImage;
         private TextView mTvProductName;
         private TextView mTvProductPrice;
+        private TextView mTvSale; //销量
+        private TextView mTvStatus;//简介
+
     }
 }

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zhitou.job.parttimejob.activity.GuideActivity">
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="match_parent"
+        android:src="@mipmap/bg"
+        android:scaleType="centerCrop"
+        android:background="@color/main_color"
+        android:layout_height="300dp" />
+    <Button
+        android:id="@+id/iv2"
+        android:scaleType="fitXY"
+        android:layout_width="100dp"
+        android:background="@mipmap/logo"
+        android:layout_marginTop="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="100dp" />
+
+    <TextView
+        android:id="@+id/tv_app_name"
+        android:layout_below="@+id/iv2"
+        android:layout_width="match_parent"
+        android:text="校园超市"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_height="wrap_content" />
+    <TextView
+
+        android:layout_below="@+id/tv_app_name"
+        android:layout_width="match_parent"
+        android:text="一款致力于服务在校学生勤工俭学的APP"
+        android:textSize="12sp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_marginBottom="50dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="登录"
+            android:onClick="click"
+            android:background="@color/main_color"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="50dp" />
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="注册"
+            android:onClick="click"
+            android:background="@color/text_gray_color"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="30dp"
+            android:layout_height="50dp" />
+    </LinearLayout>
+</RelativeLayout>
