@@ -1,9 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/main_background"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.zhitou.job.parttimejob.activity.RegisterActivity">
     <include layout="@layout/base_title"/>
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="49.5dp">
+        <ImageView
+            android:src="@mipmap/login_phone"
+            android:layout_width="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center"
+            android:layout_height="20dp" />
+
+        <EditText
+            android:id="@+id/edt_phone"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:textSize="14sp"
+            android:hint="请输入您的手机号"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="1dp"
+        android:padding="10dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageView
+            android:id="@+id/iv_code"
+            android:src="@mipmap/message_code"
+            android:layout_centerVertical="true"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+        <EditText
+            android:id="@+id/edt_code"
+            android:layout_toLeftOf="@+id/tv_code"
+            android:layout_toRightOf="@+id/iv_code"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/white"
+            android:textSize="14sp"
+            android:hint="请输入验证码"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/tv_code"
+            android:layout_width="wrap_content"
+            android:text="获取验证码"
+            android:padding="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textColor="@color/main_color"
+            android:gravity="center"
+            android:background="@drawable/shape_kuan"
+            android:layout_alignParentRight="true"
+            android:layout_height="30dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageView
+            android:id="@+id/iv_login"
+            android:src="@mipmap/login_pwd"
+            android:layout_width="20dp"
+            android:layout_centerVertical="true"
+            android:layout_height="20dp" />
+        <EditText
+            android:id="@+id/edt_password"
+            android:layout_toLeftOf="@+id/iv_see_pwd"
+            android:layout_toRightOf="@+id/iv_login"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/white"
+            android:textSize="14sp"
+            android:hint="8位以上登录密码（不全是数字）"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/iv_see_pwd"
+            android:src="@mipmap/pwd_see_off"
+            android:layout_width="30dp"
+            android:padding="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_height="30dp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="15dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="点击注册即代表同意 "
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="《校园超市网络服务协议》"
+            android:textColor="@color/text_blue_color"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:text="注册"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:background="@drawable/shape_main_color"
+        android:layout_height="50dp" />
+
+
+
+</LinearLayout>

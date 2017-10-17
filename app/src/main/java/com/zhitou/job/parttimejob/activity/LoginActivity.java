@@ -2,6 +2,7 @@ package com.zhitou.job.parttimejob.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.zhitou.job.parttimejob.R;
 import com.zhitou.job.parttimejob.base.BaseActivity;
@@ -14,5 +15,8 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         setTitle("登录");
+        mTvTitleRight.setText("注册");
+        mTvTitleRight.setVisibility(View.VISIBLE);
+
     }
 }

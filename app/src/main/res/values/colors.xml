@@ -14,6 +14,7 @@
     <color name="white">#ffffff</color>
     <!--文字主颜色-->
     <color name="main_text_color">#262626</color>
+    <color name="text_blue_color">#0894ec</color>
     <!--灰色文字-->
     <color name="text_gray_color">#828282</color>
     <!--底部标签的颜色-->
