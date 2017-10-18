@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@color/main_color"
+        android:layout_height="4dp" />
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:text="登录后才可查看更多内容！"
+        android:textColor="@color/main_text_color"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:minHeight="80dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@color/text_gray_color"
+        android:layout_height="0.5dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <TextView
+            android:id="@+id/tv_btn1"
+            android:layout_width="match_parent"
+            android:text="确定"
+            android:gravity="center"
+            android:textColor="@color/blue_color"
+            android:layout_toLeftOf="@+id/tv_line"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tv_line"
+            android:layout_width="0.5dp"
+            android:layout_centerHorizontal="true"
+            android:background="@color/text_gray_color"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/tv_btn2"
+            android:layout_width="match_parent"
+            android:text="稍后再说"
+            android:gravity="center"
+            android:textColor="@color/blue_color"
+            android:layout_toRightOf="@+id/tv_line"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
+</LinearLayout>

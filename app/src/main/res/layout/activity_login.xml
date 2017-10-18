@@ -22,6 +22,7 @@
             android:layout_height="20dp" />
 
         <EditText
+            android:id="@+id/edt_phone"
             android:layout_width="match_parent"
             android:background="@color/white"
             android:textSize="14sp"
@@ -40,9 +41,10 @@
             android:id="@+id/iv_login"
             android:src="@mipmap/login_pwd"
             android:layout_width="20dp"
-            android:layout_gravity="center"
+            android:layout_centerVertical="true"
             android:layout_height="20dp" />
         <EditText
+            android:id="@+id/edt_password"
             android:layout_toLeftOf="@+id/iv_see_pwd"
             android:layout_toRightOf="@+id/iv_login"
             android:layout_width="match_parent"
@@ -71,6 +73,7 @@
         android:layout_height="wrap_content" />
 
     <Button
+        android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
