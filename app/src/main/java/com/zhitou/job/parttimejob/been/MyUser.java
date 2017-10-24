@@ -7,8 +7,8 @@ import cn.bmob.v3.BmobUser;
  */
 public class MyUser extends BmobUser {
     private String see_password;//可见密码
-    private String real_name;//是否实名
-    private boolean is_approve;//真是姓名
+    private String real_name;//真是姓名
+    private boolean is_approve;//是否实名
     private String school;//学校
 
     public String getSee_password() {

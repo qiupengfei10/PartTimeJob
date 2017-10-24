@@ -2,6 +2,10 @@ package com.zhitou.job.parttimejob.base;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Intent;
+
+import com.zhitou.job.parttimejob.activity.LoginActivity;
+import com.zhitou.job.parttimejob.been.MyUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +21,23 @@ public class MyApplication extends Application{
         return ourInstance;
     }
 
+    //用户信息
+    public MyUser user = null;
+
     public static List<Activity> activities = new ArrayList<>();
 
     @Override
     public void onCreate() {
         super.onCreate();
         Bmob.initialize(this,"00486c3673bc2dd80341ca35b507659b");
+    }
+
+    public MyUser getUser() {
+        return user;
+    }
+
+    public void setUser(MyUser user) {
+        this.user = user;
     }
 
     public static void addActivity(Activity activity) {

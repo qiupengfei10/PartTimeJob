@@ -41,6 +41,14 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void setClick() {
+        mTvTitleRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +75,7 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void done(MyUser myUser, BmobException e) {
                 if (e == null){
+                    MyApplication.getInstance().setUser(myUser);
                     showToast("登录成功！");
                     Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                     startActivity(intent);

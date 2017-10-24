@@ -77,5 +77,4 @@ public abstract class BaseActivity extends FragmentActivity{
         void onClickListenerForDialog(TextView tvBtn1,TextView tvBtn2);
     }
 
-
 }
