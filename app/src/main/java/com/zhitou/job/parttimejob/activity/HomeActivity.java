@@ -1,6 +1,7 @@
 package com.zhitou.job.parttimejob.activity;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,16 +27,20 @@ import com.bumptech.glide.Glide;
 import com.zhitou.job.parttimejob.R;
 import com.zhitou.job.parttimejob.adapter.HomeShopAdapter;
 import com.zhitou.job.parttimejob.base.BaseActivity;
+import com.zhitou.job.parttimejob.base.MyApplication;
 import com.zhitou.job.parttimejob.been.HomeBanner;
 import com.zhitou.job.parttimejob.been.HomeShop;
+import com.zhitou.job.parttimejob.been.MyUser;
 import com.zhitou.job.parttimejob.been.Special;
 import com.zhitou.job.parttimejob.fragments.FragmentBanner;
 import com.zhitou.job.parttimejob.utils.LocationUtil;
 import com.zhitou.job.parttimejob.view.UnScrollListView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
@@ -82,7 +87,10 @@ public class HomeActivity extends BaseActivity {
             }
         }
     };
-            @Override
+    private TextView mTvUserName;
+    private MyUser user;
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_main);
@@ -186,12 +194,7 @@ public class HomeActivity extends BaseActivity {
     }
 
     private void initData() {
-        //获取用户信息
-        BmobUser user = BmobUser.getCurrentUser();
-        if (user != null){
-//            mTvPhone.setText("手机号："+user.getObjectId());
-//            mTvSchool.setText("湖北第二师范学院");
-        }
+
         //获取轮播图
         BmobQuery<HomeBanner> query = new BmobQuery<>();
         query.findObjects(new FindListener<HomeBanner>() {
@@ -306,28 +309,86 @@ public class HomeActivity extends BaseActivity {
         mIvSpecial = new ImageView[]{(ImageView) findViewById(R.id.iv_image1), (ImageView) findViewById(R.id.iv_image2), (ImageView) findViewById(R.id.iv_image3)};
     }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        isRun = true;
-        if (thread.isAlive()) {
-            thread.start();
-        }
-
-        initData();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        isRun = false;
-    }
 
     private void initView() {
+        //侧滑菜单中的控件
+        mTvUserName = (TextView)findViewById(R.id.tv_user_name);
+
     }
 
 
+    public void menuClick(View view) {
+        isLogin(); // 判断用户是否登录
+        switch (view.getId()){
+            case R.id.ll_my_shop: // 我的店铺
+                 if (!user.is_approve()){
+                    goApprove();
+                 }
+                break;
+        }
+    }
 
+    private void goApprove() {
+        showDialogTwoBtn("实名认证后才能开通店铺哦~", "暂不认证", "立即认证", new OnClickListenerForDialogTwoBtn() {
+            @Override
+            public void onClickListenerForDialog(TextView tvBtn1, TextView tvBtn2) {
+                tvBtn1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dismissAler();
+                    }
+                });
+                tvBtn2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(HomeActivity.this,IDImageActivity.class);
+                        startActivity(intent);
+                        dismissAler();
+                    }
+                });
+            }
+        });
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.e("qpf","onActivityResult" + "("+requestCode+","+resultCode+")");
+        switch (resultCode){
+            case 0:  // 登录成功返回
+                user = (MyUser) data.getSerializableExtra("user");
+                MyApplication.getInstance().setUser(user);
+                mTvUserName.setText(user.getUsername());
+                break;
+        }
+    }
 
+    public void isLogin() {
+        user = BmobUser.getCurrentUser(MyUser.class);
+        if (user == null){
+            showDialogTwoBtn("登录后才能查看更多内容！", "暂不登录", "立即登录", new OnClickListenerForDialogTwoBtn() {
+                @Override
+                public void onClickListenerForDialog(TextView tvBtn1, TextView tvBtn2) {
+                    tvBtn1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dismissAler();
+                        }
+                    });
+                    tvBtn2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent i = new Intent(HomeActivity.this,LoginActivity.class);
+                            startActivityForResult(i,100);
+                            dismissAler();
+                        }
+                    });
+                }
+            });
+
+            return;
+        }else {
+            MyApplication.getInstance().setUser(user);
+        }
+    }
 }

@@ -1,11 +1,13 @@
 package com.zhitou.job.parttimejob.been;
 
+import java.io.Serializable;
+
 import cn.bmob.v3.BmobUser;
 
 /**
  * Created by qiupengfei on 2017/10/17.
  */
-public class MyUser extends BmobUser {
+public class MyUser extends BmobUser implements Serializable{
     private String see_password;//可见密码
     private String real_name;//真是姓名
     private boolean is_approve;//是否实名

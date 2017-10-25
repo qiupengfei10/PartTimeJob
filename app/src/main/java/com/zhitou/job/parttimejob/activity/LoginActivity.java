@@ -77,8 +77,10 @@ public class LoginActivity extends BaseActivity {
                 if (e == null){
                     MyApplication.getInstance().setUser(myUser);
                     showToast("登录成功！");
-                    Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                    startActivity(intent);
+                    Intent intent = new Intent();
+                    intent.putExtra("user",myUser);
+                    setResult(0,intent);
+                    finish();
                 }   else {
                     showToast("登录失败！请重试！");
                 }

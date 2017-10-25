@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    tools:context="com.zhitou.job.parttimejob.activity.IDTextActivity">
+
+    <include
+
+        android:id="@+id/inc_title"
+        layout="@layout/base_title"/>
+
+    <EditText
+        android:layout_below="@+id/inc_title"
+        android:layout_marginTop="10dp"
+        android:id="@+id/edt_id"
+        android:padding="10dp"
+        android:textSize="14sp"
+        android:layout_width="match_parent"
+        android:hint="输入身份证号"
+        android:background="@color/white"
+        android:layout_height="50dp" />
+
+    <EditText
+        android:padding="10dp"
+        android:layout_below="@+id/edt_id"
+        android:id="@+id/edt_name"
+        android:textSize="14sp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:hint="输入真实姓名"
+        android:background="@color/white"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_margin="30dp"
+        android:background="@drawable/shape_main"
+        android:text="下一步"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_height="50dp" />
+
+</RelativeLayout>

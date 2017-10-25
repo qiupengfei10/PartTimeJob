@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/main_background"
+    android:layout_height="match_parent">
+    <include
+        android:id="@+id/inc_title"
+        layout="@layout/base_title"/>
+
+        <ImageView
+            android:layout_below="@+id/inc_title"
+            android:id="@+id/iv_id_card1"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            android:onClick="click"
+            android:src="@mipmap/id_card_1"
+            android:layout_height="180dp" />
+        <ImageView
+            android:id="@+id/iv_id_card2"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/iv_id_card1"
+            android:layout_width="match_parent"
+            android:onClick="click"
+            android:layout_marginTop="30dp"
+            android:src="@mipmap/id_card_2"
+            android:layout_height="180dp" />
+
+    <TextView
+        android:id="@+id/tv_push"
+        android:layout_width="match_parent"
+        android:layout_margin="30dp"
+        android:background="@drawable/shape_main"
+        android:text="提交验证"
+        android:textSize="16sp"
+        android:onClick="click"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_height="50dp" />
+
+</RelativeLayout>
