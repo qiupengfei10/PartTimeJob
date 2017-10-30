@@ -7,25 +7,29 @@
     <include layout="@layout/base_title"/>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
         <ImageView
             android:id="@+id/iv"
             android:layout_marginTop="100dp"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_centerHorizontal="true"
             android:src="@mipmap/no_voucher"
-            android:layout_height="wrap_content" />
+            android:layout_height="150dp" />
         <TextView
             android:id="@+id/tv_go"
             android:layout_below="@+id/iv"
             android:text="去开店"
             android:background="@drawable/common_item_white_btn"
             android:textColor="@color/white"
-            android:layout_width="150dp"
+            android:layout_width="200dp"
+            android:textSize="16sp"
             android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:layout_height="40dp" />
+            android:layout_height="45dp" />
     </RelativeLayout>
 
 </RelativeLayout>

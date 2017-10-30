@@ -1,5 +1,6 @@
 package com.zhitou.job.parttimejob.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -33,7 +34,7 @@ public class MyShopActivity extends BaseActivity {
         super.onClick(v);
         switch (v.getId()){
             case R.id.tv_go:
-                //店名 logo 经纬度 学校 具体位置 4栋404
+                startActivity(new Intent(this,PushShopInfoActivity.class));
                 break;
         }
     }

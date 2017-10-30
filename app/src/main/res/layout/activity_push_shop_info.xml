@@ -3,92 +3,260 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/main_background"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context="com.zhitou.job.parttimejob.activity.PushShopInfoActivity">
-<include layout="@layout/base_title"/>
-   <RadioGroup
-       android:layout_width="match_parent"
-       android:orientation="horizontal"
-       android:layout_margin="20dp"
-       android:layout_height="wrap_content">
-       <RadioButton
-           android:layout_width="0dp"
-           android:layout_weight="1"
-           android:layout_marginLeft="15dp"
-           android:button="@null"
-           android:gravity="center"
-           android:textSize="16sp"
-           android:textColor="@color/white"
-           android:text="官方店铺"
-           android:background="@color/main_color"
-           android:layout_height="50dp" />
-       <RadioButton
-           android:layout_width="0dp"
-           android:layout_weight="1"
-           android:button="@null"
-           android:gravity="center"
-           android:textSize="16sp"
-           android:textColor="@color/white"
-           android:text="个人店铺"
-           android:layout_marginRight="15dp"
-           android:background="@color/text_gray_color"
-           android:layout_height="50dp" />
-   </RadioGroup>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="店铺Logo"
-        android:paddingLeft="20dp"
-        android:paddingRight="30dp"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:background="@drawable/shape_right"
-        android:layout_height="40dp" />
+    <include layout="@layout/base_title" />
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_margin="20dp"
-        android:src="@mipmap/shop_logo"
-        android:layout_height="100dp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="基本信息"
-        android:paddingLeft="20dp"
-        android:paddingRight="30dp"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:background="@drawable/shape_right"
-        android:layout_height="40dp" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_height="match_parent">
         <LinearLayout
-            android:background="@color/white"
             android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:background="@color/main_color"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="官方店铺"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:background="@color/text_gray_color"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="个人店铺"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </RadioGroup>
+
             <TextView
                 android:layout_width="wrap_content"
-                android:text="店铺名称："
-                android:textColor="@color/main_text_color"
+                android:layout_height="40dp"
+                android:background="@drawable/shape_right"
                 android:gravity="center"
-                android:textStyle="bold"
-                android:layout_height="40dp" />
-            <EditText
+                android:paddingLeft="20dp"
+                android:paddingRight="30dp"
+                android:text="店铺Logo"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="centerInside"
+                android:layout_margin="20dp"
+                android:src="@mipmap/shop_logo" />
+
+            <TextView
                 android:layout_width="wrap_content"
-                android:textSize="14sp"
-                android:text="卫龙官方期间点"
-                android:textColor="@color/text_blue_color"
-                android:background="@color/white"
-                android:layout_height="40dp" />
+                android:layout_height="40dp"
+                android:background="@drawable/shape_right"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="30dp"
+                android:text="基本信息"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="店铺名称："
+                        android:textColor="@color/main_text_color"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:ellipsize="end"
+                        android:hint="为店铺取一个好听的名称吧"
+                        android:singleLine="true"
+                        android:textColor="@color/text_blue_color"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="所在学校："
+                        android:textColor="@color/main_text_color"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:ellipsize="end"
+                        android:hint="学校全称（例：武汉工程职业技术学院）"
+                        android:singleLine="true"
+                        android:textColor="@color/text_blue_color"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="所在寝室："
+                        android:textColor="@color/main_text_color"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:ellipsize="end"
+                        android:hint="4栋404"
+                        android:singleLine="true"
+                        android:textColor="@color/text_blue_color"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/shape_right"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="30dp"
+                android:text="固定消费"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="最低消费："
+                        android:textColor="@color/main_text_color"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:ellipsize="end"
+                        android:hint="满多少钱起送(单位：元)"
+                        android:singleLine="true"
+                        android:textColor="@color/text_blue_color"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:gravity="center"
+                        android:text="配送费用："
+                        android:textColor="@color/main_text_color"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@color/white"
+                        android:ellipsize="end"
+                        android:hint="10（单位：元）"
+                        android:singleLine="true"
+                        android:textColor="@color/text_blue_color"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
         </LinearLayout>
-    </LinearLayout>
+
+    </ScrollView>
 
 
 </LinearLayout>
