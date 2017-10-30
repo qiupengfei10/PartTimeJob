@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 import com.zhitou.job.parttimejob.R;
 import com.zhitou.job.parttimejob.adapter.HomeShopAdapter;
 import com.zhitou.job.parttimejob.base.BaseActivity;
@@ -44,6 +45,7 @@ import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FetchUserInfoListener;
 import cn.bmob.v3.listener.FindListener;
 
 public class HomeActivity extends BaseActivity {
@@ -194,6 +196,21 @@ public class HomeActivity extends BaseActivity {
     }
 
     private void initData() {
+        //刷新用户信息
+        BmobUser.fetchUserJsonInfo(new FetchUserInfoListener<String>() {
+            @Override
+            public void done(String s, BmobException e) {
+                //刷新用户信息
+                if (e == null){
+                    Gson gson = new Gson();
+                    user = gson.fromJson(s,MyUser.class);
+                    MyApplication.getInstance().setUser(user);
+                    log("");
+                }else {
+                    log("获取用户信息失败："+e.toString());
+                }
+            }
+        });
 
         //获取轮播图
         BmobQuery<HomeBanner> query = new BmobQuery<>();
@@ -321,8 +338,27 @@ public class HomeActivity extends BaseActivity {
         isLogin(); // 判断用户是否登录
         switch (view.getId()){
             case R.id.ll_my_shop: // 我的店铺
-                 if (!user.is_approve()){
-                    goApprove();
+                 if (user.getIs_approve() == NOT_APPLY){
+                    goApprove();  // 去申请
+                 }else if (user.getIs_approve() == APPLY_FOR){
+                     //申请失败，申请中
+                     Intent intent = new Intent(this,ApplyActivity.class);
+                     intent.putExtra("status","申请中");
+                     intent.putExtra("hint","我们将在1-3个工作日内完成审核，届时将通过手机短信的方式将结果通知到您！");
+                     startActivity(intent);
+                 }else if (user.getIs_approve() == APPLY_FAIL){
+                     Intent intent = new Intent(this,ApplyActivity.class);
+                     intent.putExtra("status","审核未通过");
+                     intent.putExtra("hint","什么原因会造成实名未通过？" +
+                             "\n1.上传身份证图片不清晰。" +
+                             "\n2.身份信息不实。" +
+                             "\n3.身份信息不符合平台要求。" +
+                             "\n如以上信息均没问题，请联系官方客服进行咨询QQ：1715120163");
+                     startActivity(intent);
+
+                 }else if (user.getIs_approve() == APPLY_SUCCESS){
+                     //实名认证完成后跳转到我的店铺页面
+                     startActivity(new Intent(this,MyShopActivity.class));
                  }
                 break;
         }
@@ -357,14 +393,12 @@ public class HomeActivity extends BaseActivity {
         switch (resultCode){
             case 0:  // 登录成功返回
                 user = (MyUser) data.getSerializableExtra("user");
-                MyApplication.getInstance().setUser(user);
                 mTvUserName.setText(user.getUsername());
                 break;
         }
     }
 
     public void isLogin() {
-        user = BmobUser.getCurrentUser(MyUser.class);
         if (user == null){
             showDialogTwoBtn("登录后才能查看更多内容！", "暂不登录", "立即登录", new OnClickListenerForDialogTwoBtn() {
                 @Override
@@ -387,8 +421,6 @@ public class HomeActivity extends BaseActivity {
             });
 
             return;
-        }else {
-            MyApplication.getInstance().setUser(user);
         }
     }
 }

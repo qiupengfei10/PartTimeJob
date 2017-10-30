@@ -30,7 +30,7 @@
         android:id="@+id/tv_push"
         android:layout_width="match_parent"
         android:layout_margin="30dp"
-        android:background="@drawable/shape_main"
+        android:background="@drawable/common_item_white_btn"
         android:text="提交验证"
         android:textSize="16sp"
         android:onClick="click"

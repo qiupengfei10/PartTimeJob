@@ -1,16 +1,23 @@
 package com.zhitou.job.parttimejob.utils;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.ContentUris;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.net.wifi.WifiConfiguration;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Base64;
 import android.util.Log;
 
@@ -334,47 +341,6 @@ public class ImageUtils {
         return null;
     }
     /**
-     * bitmap保存为文件
-     *
-     * @param bitmap
-     * @param path
-     *            存储图片路径
-     * @return
-     * @throws IOException
-     */
-    public static String saveMyBitmap(Bitmap bitmap, String path) {
-        String newfile = path + "/" + System.currentTimeMillis() + ".jpg";
-        File f = new File(path);
-        if (f.exists())
-            f.mkdirs();
-        FileOutputStream fOut = null;
-        File myfile = null;
-        try {
-            myfile = new File(newfile);
-            myfile.createNewFile();
-            fOut = new FileOutputStream(myfile);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, fOut);
-        try {
-            fOut.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-        try {
-            fOut.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-        return myfile.toString();
-    }
-    /**
      * 检查字符串是否null
      *
      * @param text
@@ -384,5 +350,62 @@ public class ImageUtils {
         if (text == null || text.equals("") || text.equals("null"))
             return true;
         return false;
+    }
+
+    /**
+     *
+     * @param activity
+     * @param requestCode
+     */
+    //调用相机
+    public static void openCamera(Activity activity,int requestCode){
+            //权限同意
+            // 指定拍照
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            activity.startActivityForResult(intent, requestCode);
+    }
+
+    //调用相机
+    public static void openAlbum(Activity activity,int requestCode){
+        //构建隐式Intent
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        //调用系统相机
+        activity.startActivityForResult(intent, requestCode);
+    }
+
+    /**
+     * 将Bitmap写入SD卡中的一个文件中,并返回写入文件的Uri
+     * @param bm
+     * @param dirPath
+     * @return
+     */
+    public static Uri saveBitmap(Bitmap bm, String dirPath) {
+        //新建文件夹用于存放裁剪后的图片
+        File tmpDir = new File(Environment.getExternalStorageDirectory() + "/" + dirPath);
+        if (!tmpDir.exists()){
+            tmpDir.mkdir();
+        }
+
+        //新建文件存储裁剪后的图片
+        File img = new File(tmpDir.getAbsolutePath() + "/avator.png");
+        try {
+            //打开文件输出流
+            FileOutputStream fos = new FileOutputStream(img);
+            //将bitmap压缩后写入输出流(参数依次为图片格式、图片质量和输出流)
+            bm.compress(Bitmap.CompressFormat.PNG, 85, fos);
+            //刷新输出流
+            fos.flush();
+            //关闭输出流
+            fos.close();
+            //返回File类型的Uri
+            return Uri.fromFile(img);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

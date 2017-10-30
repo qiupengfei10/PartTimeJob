@@ -2,6 +2,7 @@ package com.zhitou.job.parttimejob.base;
 
 import android.app.AlertDialog;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,7 +14,7 @@ import com.zhitou.job.parttimejob.R;
 /**
  * Created by qiupengfei on 2017/10/16.
  */
-public abstract class BaseActivity extends FragmentActivity{
+public abstract class BaseActivity extends FragmentActivity implements Constants , View.OnClickListener{
     protected TextView mTvTitle;
     protected ImageView mIvBack;
     protected TextView mTvTitleRight;
@@ -54,6 +55,7 @@ public abstract class BaseActivity extends FragmentActivity{
         mTvContent.setText(content);
         mTvBtn1.setText(btn1);
         mTvBtn2.setText(btn2);
+        mTvBtn1.setTextColor(getResources().getColor(R.color.text_gray_color));
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
         builder.setView(view);
         aler = builder.show();
@@ -77,4 +79,12 @@ public abstract class BaseActivity extends FragmentActivity{
         void onClickListenerForDialog(TextView tvBtn1,TextView tvBtn2);
     }
 
+    public void log(String log){
+        Log.e("qpf",this.getLocalClassName()+"\n==============================================\n"+log+"\n==============================================");
+    }
+
+    @Override
+    public void onClick(View v) {
+
+    }
 }

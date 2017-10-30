@@ -10,8 +10,28 @@ import cn.bmob.v3.BmobUser;
 public class MyUser extends BmobUser implements Serializable{
     private String see_password;//可见密码
     private String real_name;//真是姓名
-    private boolean is_approve;//是否实名
+    private int is_approve;//是否实名  0 未实名 1实名  2实名资料已提交 3实名未通过
     private String school;//学校
+
+    private String IDCard1;
+    private String IDCard2;
+
+
+    public String getIDCard1() {
+        return IDCard1;
+    }
+
+    public void setIDCard1(String IDCard1) {
+        this.IDCard1 = IDCard1;
+    }
+
+    public String getIDCard2() {
+        return IDCard2;
+    }
+
+    public void setIDCard2(String IDCard2) {
+        this.IDCard2 = IDCard2;
+    }
 
     public String getSee_password() {
         return see_password;
@@ -29,13 +49,6 @@ public class MyUser extends BmobUser implements Serializable{
         this.real_name = real_name;
     }
 
-    public boolean is_approve() {
-        return is_approve;
-    }
-
-    public void setIs_approve(boolean is_approve) {
-        this.is_approve = is_approve;
-    }
 
     public String getSchool() {
         return school;
@@ -43,5 +56,13 @@ public class MyUser extends BmobUser implements Serializable{
 
     public void setSchool(String school) {
         this.school = school;
+    }
+
+    public int getIs_approve() {
+        return is_approve;
+    }
+
+    public void setIs_approve(int is_approve) {
+        this.is_approve = is_approve;
     }
 }

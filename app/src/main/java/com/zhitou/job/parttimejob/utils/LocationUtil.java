@@ -80,7 +80,7 @@ public class LocationUtil extends Activity{
 
     //检测权限
     public static void openAuthority(Activity context) {
-        //检测权限是否开启
+
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             //申请WRITE_EXTERNAL_STORAGE权限

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.zhitou.job.parttimejob.activity.ApplyActivity">
+
+    <include layout="@layout/base_title"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:src="@mipmap/yes"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:textColor="@color/main_color"
+        android:text="您已成功提交审核，请耐心等候结果。"
+        android:layout_height="wrap_content" />
+    
+    <TextView
+        android:id="@+id/tv_hint"
+        android:padding="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:text="我们将在1-3个工作日内完成审核，届时将通过手机短信的方式将结果通知到您！"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

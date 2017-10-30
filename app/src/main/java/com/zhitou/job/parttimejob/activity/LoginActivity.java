@@ -75,7 +75,6 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void done(MyUser myUser, BmobException e) {
                 if (e == null){
-                    MyApplication.getInstance().setUser(myUser);
                     showToast("登录成功！");
                     Intent intent = new Intent();
                     intent.putExtra("user",myUser);

@@ -13,12 +13,42 @@ import cn.bmob.v3.BmobObject;
 public class HomeShop extends BmobObject implements Serializable{
     private String shop_logo;//商店logo
     private String shopName;//店名
-    private String sale;//月销量
-    private String reputation;//好评
     private String longitude;//经度
     private String latitude;//纬度
-    private String mininum_consume;//最低消费(多少钱起送)
+    private String school;//学校
+    private String address;//具体位置
     private String postage;//配送费
+    private String mininum_consume;//最低消费(多少钱起送)
+
+    private String user_id;//用户id
+    private String sale;//月销量
+    private String reputation;//好评
+
+
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
+
     //本店活动
     private List<ShopDiscounts> discountsList;
 

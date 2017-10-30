@@ -6,6 +6,7 @@
 
     <!--主要的颜色-->
     <color name="main_color">#de5a58</color>
+    <color name="main_color_cheked">#88de5a58</color>
     <!--背景颜色-->
     <color name="main_background">#fafafa</color>
     <!--辅助色  标签底色-->
