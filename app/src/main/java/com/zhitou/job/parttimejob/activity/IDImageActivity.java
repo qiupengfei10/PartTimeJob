@@ -57,8 +57,6 @@ public class IDImageActivity extends BaseActivity {
     private MyUser user;
     private String mFilePath;
 
-    private final int OPEN_CAMERA = 0;
-    private final int OPEN_ALBUM = 1;
     private String[] paths = new String[2];
 
     @Override
@@ -232,30 +230,30 @@ public class IDImageActivity extends BaseActivity {
         BmobFile.uploadBatch(paths, new UploadBatchListener() {
             @Override
             public void onSuccess(List<BmobFile> list, List<String> list1) {
-               if (list.size() == 2){
-                   user = BmobUser.getCurrentUser(MyUser.class);
-                   Log.e("qpf","userId" + user.getObjectId());
+                if (list.size() == 2){
+                    user = BmobUser.getCurrentUser(MyUser.class);
+                    Log.e("qpf","userId" + user.getObjectId());
 //                   MyUser newUser = new MyUser();
-                   user.setIs_approve(APPLY_FOR);
-                   user.setIDCard1(list.get(0).getFileUrl());
-                   user.setIDCard2(list.get(1).getFileUrl());
+                    user.setIs_approve(APPLY_FOR);
+                    user.setIDCard1(list.get(0).getFileUrl());
+                    user.setIDCard2(list.get(1).getFileUrl());
 
-                   user.update(new UpdateListener() {
-                       @Override
-                       public void done(BmobException e) {
-                           if (e == null){
-                               Intent intent = new Intent(IDImageActivity.this,ApplyActivity.class);
-                               intent.putExtra("status","您已成功提交审核，请耐心等候结果。");
-                               intent.putExtra("hint","我们将在1-3个工作日内完成审核，届时将通过手机短信的方式将结果通知到您！");
-                               startActivity(intent);
-                           }else {
-                               showToast("上传用户信息失败，请重试！");
-                               Log.e("qpf","上传用户信息失败 " + e.toString());
-                               upLoading = false;
-                           }
-                       }
-                   });
-               }
+                    user.update(new UpdateListener() {
+                        @Override
+                        public void done(BmobException e) {
+                            if (e == null){
+                                Intent intent = new Intent(IDImageActivity.this,ApplyActivity.class);
+                                intent.putExtra("status","您已成功提交审核，请耐心等候结果。");
+                                intent.putExtra("hint","我们将在1-3个工作日内完成审核，届时将通过手机短信的方式将结果通知到您！");
+                                startActivity(intent);
+                            }else {
+                                showToast("上传用户信息失败，请重试！");
+                                Log.e("qpf","上传用户信息失败 " + e.toString());
+                                upLoading = false;
+                            }
+                        }
+                    });
+                }
 
             }
 

@@ -16,6 +16,17 @@ public class ShopDiscounts extends BmobObject{
     private String min_price;       // 消费多少可用
     private String discounts_price; //优惠价格
 
+    public ShopDiscounts() {
+    }
+
+    public ShopDiscounts( int type, String key_word, String status, String min_price, String discounts_price) {
+        this.type = type;
+        this.key_word = key_word;
+        this.status = status;
+        this.min_price = min_price;
+        this.discounts_price = discounts_price;
+    }
+
     public int getType() {
         return type;
     }

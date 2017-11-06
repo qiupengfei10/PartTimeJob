@@ -63,6 +63,7 @@
         <activity android:name=".activity.ApplyActivity" />
         <activity android:name=".activity.MyShopActivity" />
         <activity android:name=".activity.PushShopInfoActivity"></activity>
+        <activity android:name=".activity.PushProductInfoActivity"></activity>
     </application>
 
 </manifest>

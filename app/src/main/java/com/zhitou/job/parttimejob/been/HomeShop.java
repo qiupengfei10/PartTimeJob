@@ -1,6 +1,7 @@
 package com.zhitou.job.parttimejob.been;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.BmobObject;
@@ -20,10 +21,20 @@ public class HomeShop extends BmobObject implements Serializable{
     private String postage;//配送费
     private String mininum_consume;//最低消费(多少钱起送)
 
+    //优惠活动
+    private ArrayList<ShopDiscounts> discountsLists;
+
     private String user_id;//用户id
     private String sale;//月销量
     private String reputation;//好评
 
+    public ArrayList<ShopDiscounts> getDiscountsLists() {
+        return discountsLists;
+    }
+
+    public void setDiscountsLists(ArrayList<ShopDiscounts> discountsLists) {
+        this.discountsLists = discountsLists;
+    }
 
     public String getSchool() {
         return school;

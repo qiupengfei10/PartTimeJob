@@ -8,4 +8,7 @@ public interface Constants {
     int APPLY_SUCCESS = 1;
     int APPLY_FOR = 2;
     int APPLY_FAIL = 3;
+
+    int OPEN_CAMERA = 0;
+    int OPEN_ALBUM = 1;
 }

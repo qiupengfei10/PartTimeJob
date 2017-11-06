@@ -28,7 +28,7 @@
 
                 <RadioButton
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="15dp"
                     android:layout_weight="1"
                     android:background="@color/main_color"
@@ -40,7 +40,7 @@
 
                 <RadioButton
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:layout_marginRight="15dp"
                     android:layout_weight="1"
                     android:background="@color/text_gray_color"
@@ -63,10 +63,12 @@
                 android:textSize="16sp" />
 
             <ImageView
+                android:id="@+id/iv_shop_logo"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:scaleType="centerInside"
+                android:scaleType="centerCrop"
                 android:layout_margin="20dp"
+                android:onClick="click"
                 android:src="@mipmap/shop_logo" />
 
             <TextView
@@ -105,6 +107,7 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:id="@+id/edt_shop_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@color/white"
@@ -134,6 +137,7 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:id="@+id/edt_shop_school"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@color/white"
@@ -163,6 +167,7 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:id="@+id/edt_shop_address"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@color/white"
@@ -211,6 +216,8 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:id="@+id/edt_mininum_consume"
+                        android:inputType="number"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@color/white"
@@ -240,10 +247,12 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:id="@+id/edt_postage"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@color/white"
                         android:ellipsize="end"
+                        android:inputType="number"
                         android:hint="10（单位：元）"
                         android:singleLine="true"
                         android:textColor="@color/text_blue_color"
