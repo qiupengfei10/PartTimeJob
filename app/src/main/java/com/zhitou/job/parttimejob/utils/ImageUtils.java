@@ -20,6 +20,14 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.PopupWindow;
+
+import com.zhitou.job.parttimejob.R;
+import com.zhitou.job.parttimejob.base.Constants;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -32,7 +40,8 @@ import java.io.InputStream;
 /**
  * Created by qiupengfei on 2017/9/21.
  */
-public class ImageUtils {
+public class ImageUtils implements Constants{
+    private static PopupWindow popupWindow;
     /**
      * 根据图片返回的url 获取路径
      *
@@ -406,6 +415,25 @@ public class ImageUtils {
         } catch (IOException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public static void showPopupWindow(final Context context) {
+        //设置contentView
+        final View contentView = LayoutInflater.from(context).inflate(R.layout.popuwindow_camera_or_album, null);
+        popupWindow = new PopupWindow(contentView,
+                WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, true);
+        popupWindow.setContentView(contentView);
+        popupWindow.setAnimationStyle(R.style.style_pop_animation);
+        //显示PopupWindow
+        View rootview = LayoutInflater.from(context).inflate(R.layout.activity_id_image, null);
+        popupWindow.showAtLocation(rootview, Gravity.BOTTOM, 0, 0);
+    }
+
+    public static void dismissPopupWindow() {
+        if (popupWindow != null){
+            popupWindow.dismiss();
+            popupWindow = null;
         }
     }
 }

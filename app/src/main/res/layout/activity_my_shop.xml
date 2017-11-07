@@ -7,12 +7,143 @@
     <include
         android:id="@+id/title"
         layout="@layout/base_title"/>
-    <RelativeLayout
+    <!--我的店铺-->
+    <LinearLayout
+        android:layout_below="@+id/title"
         android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@color/main_background"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:background="@color/main_color"
+            android:gravity="center_vertical"
+            android:layout_height="120dp">
+            <!--店铺详情-->
+            <ImageView
+                android:id="@+id/iv_shop_logo"
+                android:layout_width="80dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/shop_logo"
+                android:layout_height="80dp" />
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_gravity="top"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_shop_name"
+                    android:layout_width="wrap_content"
+                    android:text="邱鹏飞开的店"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_shop_address"
+                    android:layout_width="wrap_content"
+                    android:text="店铺地址：武汉工程职业技术学院"
+                    android:textSize="13sp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#ddffffff"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_address"
+                    android:layout_width="wrap_content"
+                    android:text="寝室号：5栋303"
+                    android:textSize="13sp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#ddffffff"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_push_product"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:background="@drawable/common_item_white_sele"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:layout_height="50dp">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/push_product"
+                android:layout_height="25dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="发布商品"
+                android:textSize="16sp"
+                android:textColor="@color/main_text_color"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:clickable="true"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:background="@drawable/common_item_white_sele"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:layout_height="50dp">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/product_manage"
+                android:layout_height="25dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="商品管理"
+                android:textSize="16sp"
+                android:textColor="@color/main_text_color"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:clickable="true"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:background="@drawable/common_item_white_sele"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:layout_height="50dp">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/order_manage"
+                android:layout_height="25dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="订单管理"
+                android:textSize="16sp"
+                android:textColor="@color/main_text_color"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:text="预览店铺"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        android:background="@color/main_color"
+        android:layout_height="45dp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_no_shop"
+        android:layout_below="@+id/title"
+        android:background="@color/main_background"
+        android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        >
         <ImageView
             android:id="@+id/iv"
             android:layout_marginTop="100dp"
@@ -33,91 +164,6 @@
             android:gravity="center"
             android:layout_height="45dp" />
     </RelativeLayout>
-    <!--我的店铺-->
-    <LinearLayout
-        android:layout_below="@+id/title"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:background="@color/white"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            android:background="@color/main_color"
-            android:gravity="center_vertical"
-            android:layout_height="120dp">
-            <!--店铺详情-->
-            <ImageView
-                android:layout_width="80dp"
-                android:scaleType="fitCenter"
-                android:src="@mipmap/shop_logo"
-                android:layout_height="80dp" />
 
-            <LinearLayout
-                android:layout_marginLeft="10dp"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:text="邱鹏飞开的店"
-                    android:textSize="13sp"
-                    android:textColor="@color/white"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:text="店铺地址：武汉工程职业技术学院（4栋505）"
-                    android:textSize="13sp"
-                    android:layout_marginTop="20dp"
-                    android:textColor="@color/white"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:background="@color/white"
-            android:padding="10dp"
-            android:gravity="center_vertical"
-            android:layout_height="50dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="发布商品"
-                android:textSize="16sp"
-                android:textColor="@color/main_text_color"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="1dp"
-            android:layout_width="match_parent"
-            android:background="@color/white"
-            android:padding="10dp"
-            android:gravity="center_vertical"
-            android:layout_height="50dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="商品管理"
-                android:textSize="16sp"
-                android:textColor="@color/main_text_color"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="1dp"
-            android:layout_width="match_parent"
-            android:background="@color/white"
-            android:padding="10dp"
-            android:gravity="center_vertical"
-            android:layout_height="50dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="订单管理"
-                android:textSize="16sp"
-                android:textColor="@color/main_text_color"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-    </LinearLayout>
 
 </RelativeLayout>
