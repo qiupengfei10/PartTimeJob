@@ -6,34 +6,79 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.zhitou.job.parttimejob.R;
 import com.zhitou.job.parttimejob.base.BaseActivity;
+import com.zhitou.job.parttimejob.been.Product;
+import com.zhitou.job.parttimejob.been.ProductClassify;
 import com.zhitou.job.parttimejob.utils.ImageUtils;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+import cn.bmob.v3.datatype.BmobFile;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UploadFileListener;
 
 /**
  * 上传商品信息
  */
 public class PushProductInfoActivity extends BaseActivity{
 
+    private String shop_id;
     private String path;
     private ImageView mIvProductImage;
+    private TextView mTvProductSub;
+    private Intent intent;
+    private TextView mTvProductDetail;
+
+    private String productDetail;
+    private ProductClassify sub;
+
+    private Map<TextView,String> map = new HashMap<>();
+    private EditText mEdtProductName;
+    private EditText mEdtProductPrice;
+    private EditText mEdtProductNumber;
+    private boolean isPass = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_push_product_info);
+        shop_id = getIntent().getStringExtra("shop_id");
         initView();
     }
 
     private void initView() {
+        setTitle("发布商品");
         mIvProductImage = (ImageView) findViewById(R.id.iv_product_image);
+        mTvProductSub = (TextView) findViewById(R.id.tv_product_sub);
+        mTvProductDetail = (TextView) findViewById(R.id.tv_product_detail);
+        mEdtProductName = (EditText)findViewById(R.id.edt_product_name);
+        mEdtProductPrice = (EditText)findViewById(R.id.edt_product_price);
+        mEdtProductNumber = (EditText)findViewById(R.id.edt_product_number);
+
+        map.put(mEdtProductName,"商品名称");
+        map.put(mTvProductSub,"类目");
+        map.put(mEdtProductPrice,"价格");
+        map.put(mEdtProductNumber,"库存");
+        map.put(mTvProductDetail,"商品描述");
     }
 
 
     public void click(View view){
         switch (view.getId()){
+            case R.id.tv_push:
+                //上传商品
+                pushProduct();
+                break;
             case R.id.iv_open_camera:
                 ImageUtils.showPopupWindow(this);
                 break;
@@ -48,12 +93,77 @@ public class PushProductInfoActivity extends BaseActivity{
             case R.id.tv_cancel:  //取消
                 ImageUtils.dismissPopupWindow();
                 break;
+            case R.id.tv_product_sub:  //选择类目
+                intent = new Intent(this,SelectSubActivity.class);
+                intent.putExtra("shop_id",shop_id);
+                startActivityForResult(intent,10);
+                break;
+            case R.id.tv_product_detail:  //选择类目
+                intent = new Intent(this,ProductDetailTextActivity.class);
+                if (productDetail != null && !productDetail.equals("")){
+                    intent.putExtra("detail",productDetail);
+                }
+                startActivityForResult(intent,11);
+                break;
         }
+    }
+
+    private void pushProduct() {
+        //上传图片
+        if (path == null || path.equals("")){
+            showToast("请上传商品图片！");
+            return;
+        }
+
+        //店铺图片上传成功
+        Set<TextView> key = map.keySet();
+        for (TextView k:key) {
+            if (k.getText().toString().trim().equals("")){
+                k.setHint("请填写"+map.get(k));
+                k.setHintTextColor(getResources().getColor(R.color.main_color));
+                isPass = false;
+            }
+        }
+
+        if (!isPass){
+            return;
+        }
+
+        final BmobFile file = new BmobFile(new File(path));
+        file.uploadblock(new UploadFileListener() {
+            @Override
+            public void done(BmobException e) {
+                //图片上传成功
+                if (e == null){
+                    Product product = new Product();
+                    product.setImage_url(file.getFileUrl());
+                    product.setName(mEdtProductName.getText().toString().trim());
+                    product.setPrice(Double.valueOf(mEdtProductPrice.getText().toString().trim()));
+//                    product.setba
+                    product.setStatus(productDetail);
+                    product.setShop_id(shop_id);
+                    product.setClassify_id(sub.getObjectId());
+                    //上传商品
+                    product.save(new SaveListener<String>() {
+                        @Override
+                        public void done(String s, BmobException e) {
+                            if (e == null){
+                                showToast("上传商品完成");
+                            }
+                        }
+                    });
+
+                }else {
+                    showToast("图片上传错误！");
+                }
+            }
+        });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        log("resultCode == " + resultCode);
         if (resultCode == RESULT_OK) { // 如果返回数据
             switch (requestCode) {
                 case OPEN_ALBUM:  //打开相册
@@ -89,6 +199,16 @@ public class PushProductInfoActivity extends BaseActivity{
                                 Log.e("qpf","图片保存失败!");
                             }
                         }
+                    }
+                    break;
+                case 10:
+                    sub = (ProductClassify) data.getSerializableExtra("sub");
+                    mTvProductSub.setText(sub.getSubject());
+                    break;
+                case 11:
+                    productDetail = data.getStringExtra("detail");
+                    if (productDetail!= null && !productDetail.equals("")){
+                        mTvProductDetail.setText("已编辑");
                     }
                     break;
             }

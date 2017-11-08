@@ -95,7 +95,9 @@ public class MyShopActivity extends BaseActivity {
                 startActivity(new Intent(this,PushShopInfoActivity.class));
                 break;
             case R.id.ll_push_product:
-                startActivity(new Intent(this,PushProductInfoActivity.class));
+                Intent intent = new Intent(this,PushProductInfoActivity.class);
+                intent.putExtra("shop_id",myShop.getObjectId());
+                startActivity(intent);
                 break;
 
         }

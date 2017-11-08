@@ -64,6 +64,8 @@
         <activity android:name=".activity.MyShopActivity" />
         <activity android:name=".activity.PushShopInfoActivity"></activity>
         <activity android:name=".activity.PushProductInfoActivity"></activity>
+        <activity android:name=".activity.SelectSubActivity"></activity>
+        <activity android:name=".activity.ProductDetailTextActivity"></activity>
     </application>
 
 </manifest>

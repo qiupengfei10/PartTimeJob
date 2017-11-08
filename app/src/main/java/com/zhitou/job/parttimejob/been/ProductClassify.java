@@ -1,5 +1,6 @@
 package com.zhitou.job.parttimejob.been;
 
+import java.io.Serializable;
 import java.util.List;
 
 import cn.bmob.v3.BmobObject;
@@ -9,7 +10,7 @@ import cn.bmob.v3.BmobObject;
  *
  * 商品分类
  */
-public class ProductClassify extends BmobObject{
+public class ProductClassify extends BmobObject implements Serializable{
 
     private int index;  // 序号
 
