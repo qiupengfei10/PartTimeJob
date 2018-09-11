@@ -51,21 +51,26 @@
         <activity
             android:name=".activity.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".activity.IDTextActivity" />
+        <activity android:name=".activity.IDImageActivity" />
+        <activity android:name=".activity.ApplyActivity" />
+        <activity android:name=".activity.MyShopActivity" />
+        <activity android:name=".activity.PushShopInfoActivity" />
+        <activity android:name=".activity.PushProductInfoActivity" />
+        <!-- <activity android:name=".activity.SelectSubActivity"></activity> -->
+        <!-- <activity android:name=".activity.ProductDetailTextActivity"></activity> -->
+        <activity android:name=".activity.SelectSubActivity" />
+        <activity android:name=".activity.ProductDetailTextActivity" />
+        <activity android:name=".activity.ProductManageActivity" />
+        <activity android:name="com.zhitou.job.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.IDTextActivity" />
-        <activity android:name=".activity.IDImageActivity" />
-        <activity android:name=".activity.ApplyActivity" />
-        <activity android:name=".activity.MyShopActivity" />
-        <activity android:name=".activity.PushShopInfoActivity"></activity>
-        <activity android:name=".activity.PushProductInfoActivity"></activity>
-        <activity android:name=".activity.SelectSubActivity"></activity>
-        <activity android:name=".activity.ProductDetailTextActivity"></activity>
+        <activity android:name="com.zhitou.job.main.PushTwoHandActivity"></activity>
     </application>
 
 </manifest>

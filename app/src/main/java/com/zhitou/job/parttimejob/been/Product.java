@@ -1,11 +1,13 @@
 package com.zhitou.job.parttimejob.been;
 
+import java.io.Serializable;
+
 import cn.bmob.v3.BmobObject;
 
 /**
  * Created by qiupengfei on 2017/6/26.
  */
-public class Product extends BmobObject{
+public class Product extends BmobObject implements Serializable {
     private String shop_id;  //商店id
     private String classify_id; //分类id
     private String image_url;//图片

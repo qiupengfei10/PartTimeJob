@@ -26,5 +26,6 @@
     <color name="blue_color">#279AEC</color>
     <color name="yellow_color">#f9ad08</color>
     <color name="green_color">#85cf8a</color>
+    <color name="line_gray_color">#f4f4f4</color>
 
 </resources>

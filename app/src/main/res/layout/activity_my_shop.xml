@@ -74,7 +74,6 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_marginRight="10dp"
-                android:src="@mipmap/push_product"
                 android:layout_height="25dp" />
             <TextView
                 android:layout_width="wrap_content"
@@ -84,6 +83,7 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/ll_product_manage"
             android:clickable="true"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
@@ -94,7 +94,6 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_marginRight="10dp"
-                android:src="@mipmap/product_manage"
                 android:layout_height="25dp" />
             <TextView
                 android:layout_width="wrap_content"
@@ -114,7 +113,6 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_marginRight="10dp"
-                android:src="@mipmap/order_manage"
                 android:layout_height="25dp" />
             <TextView
                 android:layout_width="wrap_content"

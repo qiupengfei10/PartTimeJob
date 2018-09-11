@@ -198,7 +198,7 @@ public class PushShopInfoActivity extends BaseActivity{
                     String imageUrl = bmobFile.getFileUrl();
                     //上传店铺信息
                     final HomeShop shop = new HomeShop(imageUrl,mEdtShopName.getText().toString().trim());
-                   shop.setUser_id(BmobUser.getCurrentUser(MyUser.class).getObjectId());
+                    shop.setUser_id(BmobUser.getCurrentUser(MyUser.class).getObjectId());
                     shop.setAddress(mEdtAddress.getText().toString().trim());
                     shop.setMininum_consume(mEdtMininumConsue.getText().toString().trim());
                     shop.setPostage(mEdtPostage.getText().toString().trim());
@@ -213,6 +213,7 @@ public class PushShopInfoActivity extends BaseActivity{
                                 showToast("创建店铺成功！");
                                 //发布商品
                                 Intent intent = new Intent(PushShopInfoActivity.this,PushProductInfoActivity.class);
+                                intent.putExtra("shop_id",shop.getObjectId());
                                 startActivity(intent);
                             }
                         }

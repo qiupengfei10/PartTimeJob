@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.ProductDetailTextActivity">
+
+
+    <include layout="@layout/base_title"/>
+
+    <EditText
+        android:id="@+id/edt_content"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:gravity="top|left"
+        android:padding="15dp"
+        android:textSize="14sp"
+        android:hint="请输入商品详情（0~100个字）"
+        android:layout_marginTop="10dp"
+        android:layout_height="100dp" />
+
+</LinearLayout>

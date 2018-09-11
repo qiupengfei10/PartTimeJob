@@ -13,9 +13,28 @@ public class MyUser extends BmobUser implements Serializable{
     private int is_approve;//是否实名  0 未实名 1实名  2实名资料已提交 3实名未通过
     private String school;//学校
 
+    private String NickName;
+    private String UserImage;
+
     private String IDCard1;
     private String IDCard2;
 
+
+    public String getNickName() {
+        return NickName;
+    }
+
+    public void setNickName(String nickName) {
+        NickName = nickName;
+    }
+
+    public String getUserImage() {
+        return UserImage;
+    }
+
+    public void setUserImage(String userImage) {
+        UserImage = userImage;
+    }
 
     public String getIDCard1() {
         return IDCard1;

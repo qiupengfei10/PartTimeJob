@@ -17,13 +17,14 @@
             android:background="@color/main_background"
             android:id="@+id/iv_product_image"
             android:layout_height="150dp" />
+
         <ImageView
             android:id="@+id/iv_open_camera"
-            android:layout_width="wrap_content"
-            android:onClick="click"
-            android:src="@mipmap/open_camera"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_centerInParent="true"
-            android:layout_height="wrap_content" />
+            android:onClick="click"
+            android:src="@mipmap/push_image1" />
     </RelativeLayout>
 
    <EditText

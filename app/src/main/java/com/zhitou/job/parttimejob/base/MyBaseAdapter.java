@@ -1,6 +1,7 @@
 package com.zhitou.job.parttimejob.base;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -11,8 +12,8 @@ import java.util.List;
  * Created by qiupengfei on 2017/6/22.
  */
 public abstract class MyBaseAdapter<T> extends BaseAdapter{
-    public Context context;
-    public List<T> data;
+    protected Context context;
+    protected List<T> data;
 
     public MyBaseAdapter(Context context, List<T> data) {
         this.context = context;
@@ -36,4 +37,8 @@ public abstract class MyBaseAdapter<T> extends BaseAdapter{
 
     @Override
     public abstract View getView(int position, View convertView, ViewGroup parent);
+
+    protected void L(String tag,String content){
+        Log.e(context.getPackageName(),"【"+tag+"】"+content);
+    }
 }

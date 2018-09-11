@@ -335,32 +335,37 @@ public class HomeActivity extends BaseActivity {
 
 
     public void menuClick(View view) {
-        isLogin(); // 判断用户是否登录
         switch (view.getId()){
             case R.id.ll_my_shop: // 我的店铺
-                 if (user.getIs_approve() == NOT_APPLY){
-                    goApprove();  // 去申请
-                 }else if (user.getIs_approve() == APPLY_FOR){
-                     //申请失败，申请中
-                     Intent intent = new Intent(this,ApplyActivity.class);
-                     intent.putExtra("status","申请中");
-                     intent.putExtra("hint","我们将在1-3个工作日内完成审核，届时将通过手机短信的方式将结果通知到您！");
-                     startActivity(intent);
-                 }else if (user.getIs_approve() == APPLY_FAIL){
-                     Intent intent = new Intent(this,ApplyActivity.class);
-                     intent.putExtra("status","审核未通过");
-                     intent.putExtra("hint","什么原因会造成实名未通过？" +
-                             "\n1.上传身份证图片不清晰。" +
-                             "\n2.身份信息不实。" +
-                             "\n3.身份信息不符合平台要求。" +
-                             "\n如以上信息均没问题，请联系官方客服进行咨询QQ：1715120163");
-                     startActivity(intent);
-
-                 }else if (user.getIs_approve() == APPLY_SUCCESS){
-                     //实名认证完成后跳转到我的店铺页面
-                     startActivity(new Intent(this,MyShopActivity.class));
-                 }
+                openMyShop();
                 break;
+        }
+    }
+
+    private void openMyShop() {
+        if (user == null){
+            showDialog();
+        }else if (user.getIs_approve() == NOT_APPLY){
+            goApprove();  // 去申请
+        }else if (user.getIs_approve() == APPLY_FOR){
+            //申请失败，申请中
+            Intent intent = new Intent(this,ApplyActivity.class);
+            intent.putExtra("status","申请中");
+            intent.putExtra("hint","我们将在1-3个工作日内完成审核，届时将通过手机短信的方式将结果通知到您！");
+            startActivity(intent);
+        }else if (user.getIs_approve() == APPLY_FAIL){
+            Intent intent = new Intent(this,ApplyActivity.class);
+            intent.putExtra("status","审核未通过");
+            intent.putExtra("hint","什么原因会造成实名未通过？" +
+                    "\n1.上传身份证图片不清晰。" +
+                    "\n2.身份信息不实。" +
+                    "\n3.身份信息不符合平台要求。" +
+                    "\n如以上信息均没问题，请联系官方客服进行咨询QQ：1715120163");
+            startActivity(intent);
+
+        }else if (user.getIs_approve() == APPLY_SUCCESS){
+            //实名认证完成后跳转到我的店铺页面
+            startActivity(new Intent(this,MyShopActivity.class));
         }
     }
 
@@ -398,29 +403,26 @@ public class HomeActivity extends BaseActivity {
         }
     }
 
-    public void isLogin() {
-        if (user == null){
-            showDialogTwoBtn("登录后才能查看更多内容！", "暂不登录", "立即登录", new OnClickListenerForDialogTwoBtn() {
-                @Override
-                public void onClickListenerForDialog(TextView tvBtn1, TextView tvBtn2) {
-                    tvBtn1.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            dismissAler();
-                        }
-                    });
-                    tvBtn2.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent i = new Intent(HomeActivity.this,LoginActivity.class);
-                            startActivityForResult(i,100);
-                            dismissAler();
-                        }
-                    });
-                }
-            });
+    public void showDialog() {
+        showDialogTwoBtn("登录后才能查看更多内容！", "暂不登录", "立即登录", new OnClickListenerForDialogTwoBtn() {
+            @Override
+            public void onClickListenerForDialog(TextView tvBtn1, TextView tvBtn2) {
+                tvBtn1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dismissAler();
+                    }
+                });
+                tvBtn2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(HomeActivity.this,LoginActivity.class);
+                        startActivityForResult(i,100);
+                        dismissAler();
+                    }
+                });
+            }
+        });
 
-            return;
-        }
     }
 }

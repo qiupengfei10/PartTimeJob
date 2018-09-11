@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.zhitou.job.main.PushTwoHandActivity">
+
+    <include layout="@layout/base_title"/>
+
+    <LinearLayout
+        android:gravity="center"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="添加图片"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:background="@color/line_gray_color"
+        android:layout_height="0.5dp" />
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:background="@color/line_gray_color"
+        android:layout_height="0.5dp" />
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:padding="15dp"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="wrap_content"
+            android:background="@color/white"
+            android:hint="宝贝的标题 品牌型号不可少"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:background="@color/white"
+            android:layout_marginTop="5dp"
+            android:minHeight="120dp"
+            android:gravity="top"
+            android:textSize="14sp"
+            android:hint="在这里详细描述一下\n宝贝的转让原因、入手渠道、规格尺寸、新旧程度和使用感受"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:text="湖北 武汉"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="全新宝贝"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:background="@color/line_gray_color"
+        android:layout_height="0.5dp" />
+
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_height="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="分类"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:hint="选择分类"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:src="@mipmap/icon_arrow_right_gray"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="@color/line_gray_color"
+            android:layout_height="0.5dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_height="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="价格"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:hint="开个价"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:src="@mipmap/icon_arrow_right_gray"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="@color/line_gray_color"
+            android:layout_height="0.5dp" />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv_push"
+        android:text="发布"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:background="@drawable/shape_main_color"
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
+        android:layout_height="40dp" />
+
+</LinearLayout>

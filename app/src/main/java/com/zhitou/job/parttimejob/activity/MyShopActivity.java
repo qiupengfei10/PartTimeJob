@@ -76,6 +76,7 @@ public class MyShopActivity extends BaseActivity {
     private void setOnClick() {
         findViewById(R.id.tv_go).setOnClickListener(this);
         findViewById(R.id.ll_push_product).setOnClickListener(this);
+        findViewById(R.id.ll_product_manage).setOnClickListener(this);
     }
 
     private void initView() {
@@ -90,12 +91,18 @@ public class MyShopActivity extends BaseActivity {
     @Override
     public void onClick(View v) {
         super.onClick(v);
+        Intent intent;
         switch (v.getId()){
             case R.id.tv_go:
                 startActivity(new Intent(this,PushShopInfoActivity.class));
                 break;
             case R.id.ll_push_product:
-                Intent intent = new Intent(this,PushProductInfoActivity.class);
+                intent = new Intent(this,PushProductInfoActivity.class);
+                intent.putExtra("shop_id",myShop.getObjectId());
+                startActivity(intent);
+                break;
+            case R.id.ll_product_manage:
+                intent = new Intent(this,ProductManageActivity.class);
                 intent.putExtra("shop_id",myShop.getObjectId());
                 startActivity(intent);
                 break;

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+        <android.support.v7.widget.CardView
+            android:layout_width="45dp"
+            app:cardCornerRadius="25dp"
+            android:layout_height="45dp">
+            <ImageView
+                android:id="@+id/iv_user_logo"
+                android:layout_width="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/id_card_1"
+                android:layout_height="match_parent" />
+
+        </android.support.v7.widget.CardView>
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:textColor="@color/main_text_color"
+                android:text="邱鹏飞"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_address"
+                android:text="湖北武汉 | 在线"
+                android:textSize="12sp"
+                android:textColor="@color/text_gray_color"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/colorAccent"
+            android:layout_height="100dp">
+            <ImageView
+                android:id="@+id/iv_image1"
+                android:layout_width="match_parent"
+                android:src="@mipmap/id_card_1"
+                android:scaleType="centerCrop"
+                android:layout_height="match_parent" />
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/colorAccent"
+            android:layout_height="100dp">
+            <ImageView
+                android:id="@+id/iv_image2"
+                android:layout_width="match_parent"
+                android:src="@mipmap/id_card_1"
+                android:scaleType="centerCrop"
+                android:layout_height="match_parent" />
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="5dp"
+            android:layout_marginRight="15dp"
+            android:background="@color/colorAccent"
+            android:layout_height="100dp">
+            <ImageView
+                android:id="@+id/iv_image3"
+                android:layout_width="match_parent"
+                android:src="@mipmap/id_card_1"
+                android:scaleType="centerCrop"
+                android:layout_height="match_parent" />
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="5dp"
+            android:visibility="gone"
+            android:layout_marginRight="15dp"
+            android:background="@color/colorAccent"
+            android:layout_height="100dp">
+            <ImageView
+                android:id="@+id/iv_image4"
+                android:layout_width="match_parent"
+                android:src="@mipmap/id_card_1"
+                android:scaleType="centerCrop"
+                android:layout_height="match_parent" />
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:text="苹果手机合格后大概的好机会防静电计算机的货架上安监局点击活动经费"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:textColor="@color/main_text_color"
+        android:textStyle="bold"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_marginBottom="5dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="¥"
+            android:textColor="@color/main_color"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:text="500"
+            android:textSize="18sp"
+            android:textColor="@color/main_color"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@color/line_gray_color"
+        android:layout_height="5dp" />
+</LinearLayout>

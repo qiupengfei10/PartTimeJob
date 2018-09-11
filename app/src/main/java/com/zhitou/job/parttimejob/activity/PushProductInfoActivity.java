@@ -10,13 +10,16 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.zhitou.job.parttimejob.R;
 import com.zhitou.job.parttimejob.base.BaseActivity;
 import com.zhitou.job.parttimejob.been.Product;
 import com.zhitou.job.parttimejob.been.ProductClassify;
+import com.zhitou.job.parttimejob.constant.Constant;
 import com.zhitou.job.parttimejob.utils.ImageUtils;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -46,13 +49,19 @@ public class PushProductInfoActivity extends BaseActivity{
     private EditText mEdtProductPrice;
     private EditText mEdtProductNumber;
     private boolean isPass = true;
+    private Product product;
+    private String from;
+    private TextView mTvPush;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_push_product_info);
+        from = getIntent().getStringExtra("from");
         shop_id = getIntent().getStringExtra("shop_id");
+        //编辑商品传过来的
+        product = (Product)getIntent().getSerializableExtra("product");
         initView();
     }
 
@@ -64,12 +73,25 @@ public class PushProductInfoActivity extends BaseActivity{
         mEdtProductName = (EditText)findViewById(R.id.edt_product_name);
         mEdtProductPrice = (EditText)findViewById(R.id.edt_product_price);
         mEdtProductNumber = (EditText)findViewById(R.id.edt_product_number);
+        mTvPush = (TextView)findViewById(R.id.tv_push);
 
         map.put(mEdtProductName,"商品名称");
         map.put(mTvProductSub,"类目");
         map.put(mEdtProductPrice,"价格");
         map.put(mEdtProductNumber,"库存");
         map.put(mTvProductDetail,"商品描述");
+
+        //
+        if (product != null){
+            setTitle("编辑商品");
+            Glide.with(this).load(product.getImage_url()).into(mIvProductImage);
+            mEdtProductName.setText(product.getName());
+            mTvProductSub.setText("修改类目");
+            mEdtProductPrice.setText(product.getPrice() + "");
+            mEdtProductNumber.setText(product.getSale() + "");
+            mTvProductDetail.setText("已编辑");
+            mTvPush.setText("更新");
+        }
     }
 
 
@@ -98,7 +120,7 @@ public class PushProductInfoActivity extends BaseActivity{
                 intent.putExtra("shop_id",shop_id);
                 startActivityForResult(intent,10);
                 break;
-            case R.id.tv_product_detail:  //选择类目
+            case R.id.tv_product_detail:  //商品描述
                 intent = new Intent(this,ProductDetailTextActivity.class);
                 if (productDetail != null && !productDetail.equals("")){
                     intent.putExtra("detail",productDetail);
@@ -136,6 +158,9 @@ public class PushProductInfoActivity extends BaseActivity{
                 //图片上传成功
                 if (e == null){
                     Product product = new Product();
+                    if (Constant.PRODUCT_MANAGE_EDT.equals("from")){
+                        product = PushProductInfoActivity.this.product;
+                    }
                     product.setImage_url(file.getFileUrl());
                     product.setName(mEdtProductName.getText().toString().trim());
                     product.setPrice(Double.valueOf(mEdtProductPrice.getText().toString().trim()));
