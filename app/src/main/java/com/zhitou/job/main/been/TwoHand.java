@@ -2,11 +2,12 @@ package com.zhitou.job.main.been;
 
 import com.zhitou.job.parttimejob.been.MyUser;
 
+import java.util.ArrayList;
+
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.BmobUser;
 
 public class TwoHand extends BmobObject {
-
     private String Images;
     private String Title;
     private String Content;
@@ -14,7 +15,17 @@ public class TwoHand extends BmobObject {
     private String Price;
     private String Sub;
 
+    private ArrayList<ImageBeen> imageBeens;
+
     private MyUser PushUser;
+
+    public ArrayList<ImageBeen> getImageBeens() {
+        return imageBeens;
+    }
+
+    public void setImageBeens(ArrayList<ImageBeen> imageBeens) {
+        this.imageBeens = imageBeens;
+    }
 
     public MyUser getPushUser() {
         return PushUser;

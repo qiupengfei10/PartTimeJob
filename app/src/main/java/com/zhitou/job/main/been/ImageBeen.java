@@ -1,32 +1,24 @@
 package com.zhitou.job.main.been;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * Created by LCH on 2018/9/12.
  *
  * 图片的长宽高
  */
-public class ImageBeen {
+public class ImageBeen extends BmobObject{
 
-    private String image_key;
     private String with;
     private String height;
     private String path;
     private String ratio;
 
-    public ImageBeen(String image_key, String with, String height, String path, String ratio) {
-        this.image_key = image_key;
+    public ImageBeen(String with, String height, String path, String ratio) {
         this.with = with;
         this.height = height;
         this.path = path;
         this.ratio = ratio;
-    }
-
-    public String getImage_key() {
-        return image_key;
-    }
-
-    public void setImage_key(String image_key) {
-        this.image_key = image_key;
     }
 
     public String getWith() {

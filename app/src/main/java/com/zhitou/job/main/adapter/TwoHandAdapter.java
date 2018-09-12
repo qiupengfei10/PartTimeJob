@@ -55,6 +55,11 @@ public class TwoHandAdapter extends MyBaseAdapter<TwoHand> {
             Glide.with(context).load(images[0]).dontAnimate().into(holder.image1);
             Glide.with(context).load(images[1]).dontAnimate().into(holder.image2);
             Glide.with(context).load(images[2]).dontAnimate().into(holder.image3);
+            if (info.getImageBeens() != null && info.getImageBeens().size()>=3){
+                Glide.with(context).load(info.getImageBeens().get(0).getPath()).dontAnimate().into(holder.image1);
+                Glide.with(context).load(info.getImageBeens().get(1).getPath()).dontAnimate().into(holder.image2);
+                Glide.with(context).load(info.getImageBeens().get(2).getPath()).dontAnimate().into(holder.image3);
+            }
         }else {
             L("qpf","images -- " + images.length + " --- " + info.getImages());
         }

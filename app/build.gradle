@@ -62,5 +62,5 @@ dependencies {
     //打开相机选择框
     implementation 'com.lzy.widget:imagepicker:0.5.0'
     // 增加这行
-    implementation 'com.tencent.qcloud:cosxml:5.4.+'
+//    implementation 'com.tencent.qcloud:cosxml:5.4.+'
 }

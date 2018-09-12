@@ -1,14 +1,11 @@
 package com.zhitou.job.main;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.media.MediaMetadata;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -22,7 +19,6 @@ import com.zhitou.job.main.adapter.PushImageAdapter;
 import com.zhitou.job.main.been.ImageBeen;
 import com.zhitou.job.main.been.TwoHand;
 import com.zhitou.job.main.utils.AddressUtils;
-import com.zhitou.job.main.utils.CommonUtils;
 import com.zhitou.job.parttimejob.activity.LoginActivity;
 import com.zhitou.job.parttimejob.base.BaseActivity;
 import com.zhitou.job.parttimejob.been.MyUser;
@@ -60,7 +56,7 @@ public class PushTwoHandActivity extends BaseActivity{
     private String city;
     private String province;
     private String area;
-    private List<ImageBeen> pushImageList = new ArrayList<>();
+    private ArrayList<ImageBeen> pushImageList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +102,11 @@ public class PushTwoHandActivity extends BaseActivity{
             return false;
         }
 
+        if (BmobUser.getCurrentUser(MyUser.class) == null){
+            startActivity(new Intent(this, LoginActivity.class));
+            return false;
+        }
+
         return true;
     }
 
@@ -114,7 +115,8 @@ public class PushTwoHandActivity extends BaseActivity{
             @Override
             public void onClick(View view) {
                 if (verifyEdt()){
-                    sava();
+//                    sava();
+                    pushImage(pushImageList);
                 }
             }
         });
@@ -138,15 +140,12 @@ public class PushTwoHandActivity extends BaseActivity{
     }
 
     private void sava() {
-        if (BmobUser.getCurrentUser(MyUser.class) == null){
-            startActivity(new Intent(this, LoginActivity.class));
-            return;
-        }
         TwoHand twoHand = new TwoHand();
         twoHand.setAddress(city+area);
         twoHand.setContent(content);
         twoHand.setTitle(title);
         twoHand.setPrice(price);
+        twoHand.setImageBeens(pushImageList);
         twoHand.setImages(images[(int) (Math.random() * 4)]+";"+images[(int) (Math.random() * 4)]+";"+images[(int) (Math.random() * 4)]);
         twoHand.setSub("分类");
         twoHand.setPushUser(BmobUser.getCurrentUser(MyUser.class));
@@ -158,6 +157,58 @@ public class PushTwoHandActivity extends BaseActivity{
                 }else {
                     showToast("保存失败！" + e);
                 }
+            }
+        });
+    }
+
+    //上传图片
+    public void pushImage(final List<ImageBeen> pushImageList){
+        final String[] paths = new String[pushImageList.size()];
+        for (int i = 0;i < pushImageList.size();i++){
+            paths[i] = pushImageList.get(i).getPath();
+        }
+
+        //详细示例可查看BmobExample工程中BmobFileActivity类
+        BmobFile.uploadBatch(paths, new UploadBatchListener() {
+
+            @Override
+            public void onSuccess(List<BmobFile> files,List<String> urls) {
+                //1、files-上传完成后的BmobFile集合，是为了方便大家对其上传后的数据进行操作，例如你可以将该文件保存到表中
+                //2、urls-上传文件的完整url地址
+                if(urls.size()==paths.length){//如果数量相等，则代表文件全部上传完成
+                    //do something
+                    showToast("上传图片完成！");
+                    for (int i = 0; i < paths.length;i++){
+                        Log.e("qpf","图片原始地址 -- " + paths[i] + " --- 图片的网络地址 --- " + files.get(i).getFilename());
+
+                        if (pushImageList.get(i).getPath().equals(files.get(i).getFilename())){
+                            pushImageList.get(i).setPath(urls.get(i));
+                        }else {
+                            for (int j = 0;j < pushImageList.size();j++){
+                                if (pushImageList.get(i).getPath().equals(files.get(i).getFilename())){
+                                    pushImageList.get(i).setPath(urls.get(i));
+                                }
+                            }
+                        }
+                        pushImageList.get(i).save();
+                    }
+
+                    sava();
+
+                }
+            }
+
+            @Override
+            public void onError(int statuscode, String errormsg) {
+                showToast("错误码"+statuscode +",错误描述："+errormsg);
+            }
+
+            @Override
+            public void onProgress(int curIndex, int curPercent, int total,int totalPercent) {
+                //1、curIndex--表示当前第几个文件正在上传
+                //2、curPercent--表示当前上传文件的进度值（百分比）
+                //3、total--表示总的上传文件数
+                //4、totalPercent--表示总的上传进度（百分比）
             }
         });
     }
@@ -174,7 +225,7 @@ public class PushTwoHandActivity extends BaseActivity{
                 ArrayList<ImageItem> images = (ArrayList<ImageItem>) data.getSerializableExtra(ImagePicker.EXTRA_RESULT_ITEMS);
                 for (int i = 0;i < images.size();i++){
                     ImageItem image = images.get(i);
-                    pushImageList.add(new ImageBeen("android_"+CommonUtils.getRandomString(8)+System.currentTimeMillis()+"_twohand",image.width + "",image.height + "",image.path,((double)image.height/(double) image.width) + ""));
+                    pushImageList.add(new ImageBeen(image.width + "",image.height + "",image.path,((double)image.height/(double) image.width) + ""));
                 }
 
                 if (pushImageList.size() > 0){
