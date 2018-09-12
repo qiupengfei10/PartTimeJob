@@ -10,7 +10,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import com.zhitou.job.parttimejob.R;
+import com.zhitou.job.R;
 import com.zhitou.job.parttimejob.base.BaseActivity;
 
 import java.sql.Time;

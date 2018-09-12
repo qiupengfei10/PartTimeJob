@@ -4,7 +4,18 @@
     android:layout_height="match_parent">
 
     <include layout="@layout/base_title"/>
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#444444"
+        app:srlPrimaryColor="#444444"
+        app:srlAccentColor="@android:color/white"
+        app:srlEnablePreviewInEditMode="true">
 
+    <!--srlAccentColor srlPrimaryColor 将会改变 Header 和 Footer 的主题颜色-->
+    <!--srlEnablePreviewInEditMode 可以开启和关闭预览功能-->
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -28,5 +39,5 @@
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
-
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>

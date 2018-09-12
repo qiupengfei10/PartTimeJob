@@ -25,7 +25,7 @@ import android.widget.Toast;
 import com.amap.api.location.AMapLocation;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
-import com.zhitou.job.parttimejob.R;
+import com.zhitou.job.R;
 import com.zhitou.job.parttimejob.adapter.HomeShopAdapter;
 import com.zhitou.job.parttimejob.base.BaseActivity;
 import com.zhitou.job.parttimejob.base.MyApplication;

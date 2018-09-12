@@ -84,4 +84,18 @@ public class MyUser extends BmobUser implements Serializable{
     public void setIs_approve(int is_approve) {
         this.is_approve = is_approve;
     }
+
+    @Override
+    public String toString() {
+        return "MyUser{" +
+                "see_password='" + see_password + '\'' +
+                ", real_name='" + real_name + '\'' +
+                ", is_approve=" + is_approve +
+                ", school='" + school + '\'' +
+                ", NickName='" + NickName + '\'' +
+                ", UserImage='" + UserImage + '\'' +
+                ", IDCard1='" + IDCard1 + '\'' +
+                ", IDCard2='" + IDCard2 + '\'' +
+                '}';
+    }
 }

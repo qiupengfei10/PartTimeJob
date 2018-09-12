@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.zhitou.job.parttimejob.R;
+import com.zhitou.job.R;
 import com.zhitou.job.parttimejob.base.BaseActivity;
 import com.zhitou.job.parttimejob.been.ProductClassify;
 import com.zhy.view.flowlayout.FlowLayout;

@@ -8,8 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.zhitou.job.R;
 import com.zhitou.job.main.been.TwoHand;
-import com.zhitou.job.parttimejob.R;
+import com.zhitou.job.main.utils.TimeUtils;
 import com.zhitou.job.parttimejob.base.MyBaseAdapter;
 
 import java.util.List;
@@ -36,6 +37,7 @@ public class TwoHandAdapter extends MyBaseAdapter<TwoHand> {
             holder.image3 = (ImageView) convertView.findViewById(R.id.iv_image3);
             holder.mIvUserLogo = (ImageView) convertView.findViewById(R.id.iv_user_logo);
             holder.mTvUserName = (TextView) convertView.findViewById(R.id.tv_user_name);
+            holder.mTvCreateTime = (TextView) convertView.findViewById(R.id.tv_create_time);
             convertView.setTag(holder);
         }else {
             holder = (ViewHolder) convertView.getTag();
@@ -57,11 +59,16 @@ public class TwoHandAdapter extends MyBaseAdapter<TwoHand> {
             L("qpf","images -- " + images.length + " --- " + info.getImages());
         }
 
+        holder.mTvCreateTime.setText(TimeUtils.getTimeFormatText(info.getCreatedAt()));
+
+        //将格式化时间
+
         if (info.getPushUser() != null)
-            holder.mTvUserName.setText(info.getPushUser().getUsername());
+            holder.mTvUserName.setText(info.getPushUser().getNickName());
         if (info.getPushUser() != null){
-//            Glide.with(context).load(info.getPushUser().getUserImage()).dontAnimate().into(holder.mIvUserLogo);
-            L("qpf","name -- " + info.getPushUser().getUsername()+ " --- " + info.getPushUser().getUsername());
+            Glide.with(context).load(info.getPushUser().getUserImage()).dontAnimate().into(holder.mIvUserLogo);
+            L("qpf","name -- " + info.getPushUser().getObjectId()+
+                    " --- " + info.getPushUser().getCreatedAt() + " --- "+ info.getPushUser().toString());
         }
 
         return convertView;
@@ -76,5 +83,6 @@ public class TwoHandAdapter extends MyBaseAdapter<TwoHand> {
 
         private TextView mTvUserName;
         private ImageView mIvUserLogo;
+        private TextView mTvCreateTime;
     }
 }

@@ -3,7 +3,7 @@ package com.zhitou.job.parttimejob.activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.zhitou.job.parttimejob.R;
+import com.zhitou.job.R;
 import com.zhitou.job.parttimejob.base.BaseActivity;
 
 public class ApplyActivity extends BaseActivity {

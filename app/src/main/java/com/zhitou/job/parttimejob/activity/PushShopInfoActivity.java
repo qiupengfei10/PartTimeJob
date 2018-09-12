@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 
-import com.zhitou.job.parttimejob.R;
+import com.zhitou.job.R;;
 import com.zhitou.job.parttimejob.adapter.DiscountsAdapter;
 import com.zhitou.job.parttimejob.base.BaseActivity;
 import com.zhitou.job.parttimejob.been.HomeShop;

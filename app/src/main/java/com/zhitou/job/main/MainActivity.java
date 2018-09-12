@@ -1,18 +1,15 @@
 package com.zhitou.job.main;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
+import com.zhitou.job.R;
 import com.zhitou.job.main.fragment.HomeFragment;
-import com.zhitou.job.parttimejob.R;
 import com.zhitou.job.parttimejob.base.BaseActivity;
-import com.zhitou.job.parttimejob.fragments.FragmentBanner;
 
 public class MainActivity extends BaseActivity {
     RadioGroup radioGroup;

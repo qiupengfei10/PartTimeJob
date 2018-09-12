@@ -1,8 +1,6 @@
 package com.zhitou.job.parttimejob.fragments;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 
 import com.zhitou.job.parttimejob.adapter.ProductAdapter;
@@ -11,7 +9,6 @@ import com.zhitou.job.parttimejob.base.MyBaseAdapter;
 import com.zhitou.job.parttimejob.been.Product;
 
 import java.util.List;
-import java.util.logging.Level;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;

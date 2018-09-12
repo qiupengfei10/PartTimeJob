@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.zhitou.job.parttimejob.R;
+import com.zhitou.job.R;
 import com.zhitou.job.parttimejob.base.BaseActivity;
 import com.zhitou.job.parttimejob.base.MyApplication;
 import com.zhitou.job.parttimejob.been.MyUser;

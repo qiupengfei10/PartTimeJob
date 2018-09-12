@@ -2,7 +2,7 @@ package com.zhitou.job.parttimejob.activity;
 
 import android.os.Bundle;
 
-import com.zhitou.job.parttimejob.R;
+import com.zhitou.job.R;
 import com.zhitou.job.parttimejob.base.BaseActivity;
 
 /**

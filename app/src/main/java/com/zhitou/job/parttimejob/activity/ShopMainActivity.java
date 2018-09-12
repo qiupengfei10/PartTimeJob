@@ -1,45 +1,29 @@
 package com.zhitou.job.parttimejob.activity;
 
 import android.annotation.TargetApi;
-import android.database.sqlite.SQLiteStatement;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.zhitou.job.parttimejob.R;
-import com.zhitou.job.parttimejob.adapter.ShopMainAdapter;
+import com.zhitou.job.R;
 import com.zhitou.job.parttimejob.adapter.SubAdapter;
-import com.zhitou.job.parttimejob.adapter.ProductAdapter;
-import com.zhitou.job.parttimejob.base.BaseFragmentList;
 import com.zhitou.job.parttimejob.been.HomeShop;
-import com.zhitou.job.parttimejob.been.Point;
 import com.zhitou.job.parttimejob.been.Product;
 import com.zhitou.job.parttimejob.been.ProductClassify;
 import com.zhitou.job.parttimejob.fragments.FragmentProductList;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

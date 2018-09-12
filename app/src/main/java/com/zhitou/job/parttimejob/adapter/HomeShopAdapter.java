@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.cache.DiskCache;
 import com.zhitou.job.parttimejob.activity.ShopMainActivity;
 import com.zhitou.job.parttimejob.base.MyBaseAdapter;
-import com.zhitou.job.parttimejob.R;
+import com.zhitou.job.R;
 import com.zhitou.job.parttimejob.been.HomeShop;
 import com.zhitou.job.parttimejob.been.ShopDiscounts;
 import com.zhitou.job.parttimejob.view.UnScrollListView;

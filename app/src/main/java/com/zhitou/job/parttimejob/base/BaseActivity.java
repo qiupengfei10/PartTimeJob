@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zhitou.job.parttimejob.R;
+import com.zhitou.job.R;
 
 /**
  * Created by qiupengfei on 2017/10/16.

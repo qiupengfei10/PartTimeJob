@@ -9,16 +9,33 @@
 
     <include layout="@layout/base_title"/>
 
-    <LinearLayout
-        android:gravity="center"
-        android:background="@color/white"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:text="添加图片"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+        android:gravity="center_vertical"
+        android:layout_height="120dp">
+        <LinearLayout
+            android:id="@+id/ll_open_camera"
+            android:gravity="center"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="添加图片"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:visibility="gone"
+            android:layout_centerVertical="true"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </RelativeLayout>
     <TextView
         android:layout_width="wrap_content"
         android:background="@color/line_gray_color"
@@ -37,6 +54,7 @@
         android:orientation="vertical"
         android:layout_height="wrap_content">
         <EditText
+            android:id="@+id/edt_title"
             android:layout_width="wrap_content"
             android:background="@color/white"
             android:hint="宝贝的标题 品牌型号不可少"
@@ -44,6 +62,7 @@
             android:textStyle="bold"
             android:layout_height="wrap_content" />
         <EditText
+            android:id="@+id/edt_content"
             android:layout_width="wrap_content"
             android:background="@color/white"
             android:layout_marginTop="5dp"
@@ -59,12 +78,14 @@
             android:orientation="horizontal"
             android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/tv_address"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:text="湖北 武汉"
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/tv_type"
                 android:layout_width="wrap_content"
                 android:text="全新宝贝"
                 android:layout_height="wrap_content" />
@@ -128,10 +149,13 @@
                 android:layout_width="wrap_content"
                 android:text="价格"
                 android:layout_height="wrap_content" />
-            <TextView
+            <EditText
+                android:id="@+id/edt_price"
                 android:layout_width="wrap_content"
                 android:hint="开个价"
+                android:background="@color/white"
                 android:layout_weight="1"
+                android:textSize="14sp"
                 android:gravity="right"
                 android:layout_height="wrap_content" />
             <ImageView

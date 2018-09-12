@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zhitou.job.parttimejob.base.MyBaseAdapter;
-import com.zhitou.job.parttimejob.R;
+import com.zhitou.job.R;
 import com.zhitou.job.parttimejob.been.ProductClassify;
 import com.zhitou.job.parttimejob.view.UnScrollListView;
 
