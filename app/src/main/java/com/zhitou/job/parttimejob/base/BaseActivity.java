@@ -9,7 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zhitou.job.MyApplication;
 import com.zhitou.job.R;
+import com.zhitou.job.main.view.LoadingView;
 
 /**
  * Created by qiupengfei on 2017/10/16.
@@ -19,12 +21,36 @@ public abstract class BaseActivity extends FragmentActivity implements Constants
     protected ImageView mIvBack;
     protected TextView mTvTitleRight;
     private AlertDialog aler;
+    private LoadingView loadingView;
 
     protected void dismissAler() {
         if (aler != null){
             aler.dismiss();
             aler = null;
         }
+    }
+
+    public void showLoading(){
+        if (loadingView == null){
+            loadingView = new LoadingView(this, R.style.CustomDialog);
+        }
+        loadingView.show();
+    }
+
+    public void showLoading(String text){
+        if (loadingView == null){
+            loadingView = new LoadingView(this, R.style.CustomDialog);
+        }
+
+        loadingView.setText(text);
+        loadingView.show();
+    }
+
+    public void dismissLoading(){
+        if (loadingView == null){
+            return;
+        }
+        loadingView.dismiss();
     }
 
     protected void setTitle(String title) {
@@ -47,6 +73,8 @@ public abstract class BaseActivity extends FragmentActivity implements Constants
         mIvBack.setVisibility(View.GONE);
     }
 
+
+
     protected void showDialogTwoBtn(String content,String btn1,String btn2,OnClickListenerForDialogTwoBtn onClick) {
         View view = LayoutInflater.from(this).inflate(R.layout.base_dialog_view,null);
         TextView mTvContent = (TextView) view.findViewById(R.id.tv_content);
@@ -60,8 +88,6 @@ public abstract class BaseActivity extends FragmentActivity implements Constants
         builder.setView(view);
         aler = builder.show();
         onClick.onClickListenerForDialog(mTvBtn1,mTvBtn2);
-
-
     }
     protected void showToast(String text) {
         Toast.makeText(this,text,Toast.LENGTH_SHORT).show();

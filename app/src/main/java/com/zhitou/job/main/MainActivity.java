@@ -9,6 +9,7 @@ import android.widget.RadioGroup;
 
 import com.zhitou.job.R;
 import com.zhitou.job.main.fragment.HomeFragment;
+import com.zhitou.job.main.fragment.TaoBaoFragment;
 import com.zhitou.job.parttimejob.base.BaseActivity;
 
 public class MainActivity extends BaseActivity {
@@ -19,6 +20,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        savedInstanceState = null;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_new);
         initView();
@@ -29,7 +31,6 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.tv_push).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showToast("点击发布按钮！");
                 startActivity(new Intent(MainActivity.this,PushTwoHandActivity.class));
             }
         });
@@ -67,16 +68,20 @@ public class MainActivity extends BaseActivity {
         }else {
             switch (position){
                 case 0:
-                    transaction.add(R.id.fl_content,new HomeFragment());
+                    fragments[0] = new HomeFragment();
+                    transaction.add(R.id.fl_content,fragments[0]);
                     break;
                 case 1:
-                    transaction.add(R.id.fl_content,new HomeFragment());
+                    fragments[1] = new TaoBaoFragment();
+                    transaction.add(R.id.fl_content,fragments[1]);
                     break;
                 case 2:
-                    transaction.add(R.id.fl_content,new HomeFragment());
+                    fragments[2] = new HomeFragment();
+                    transaction.add(R.id.fl_content,fragments[2]);
                     break;
                 case 3:
-                    transaction.add(R.id.fl_content,new HomeFragment());
+                    fragments[3] = new HomeFragment();
+                    transaction.add(R.id.fl_content,fragments[3]);
                     break;
             }
         }

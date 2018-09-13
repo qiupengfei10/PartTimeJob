@@ -1,17 +1,13 @@
 package com.zhitou.job.parttimejob.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.zhitou.job.R;
 import com.zhitou.job.parttimejob.base.BaseActivity;
-import com.zhitou.job.parttimejob.base.MyApplication;
 import com.zhitou.job.parttimejob.been.MyUser;
 import com.zhitou.job.parttimejob.utils.VerifyUtil;
 

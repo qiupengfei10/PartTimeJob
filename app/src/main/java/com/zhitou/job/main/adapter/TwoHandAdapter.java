@@ -49,19 +49,15 @@ public class TwoHandAdapter extends MyBaseAdapter<TwoHand> {
         holder.mTvAddress.setText(info.getAddress());
         holder.mTvPrice.setText(info.getPrice());
 
-        String[] images = info.getImages().split(";");
-
-        if (images.length >= 3){
-            Glide.with(context).load(images[0]).dontAnimate().into(holder.image1);
-            Glide.with(context).load(images[1]).dontAnimate().into(holder.image2);
-            Glide.with(context).load(images[2]).dontAnimate().into(holder.image3);
-            if (info.getImageBeens() != null && info.getImageBeens().size()>=3){
-                Glide.with(context).load(info.getImageBeens().get(0).getPath()).dontAnimate().into(holder.image1);
-                Glide.with(context).load(info.getImageBeens().get(1).getPath()).dontAnimate().into(holder.image2);
-                Glide.with(context).load(info.getImageBeens().get(2).getPath()).dontAnimate().into(holder.image3);
-            }
-        }else {
-            L("qpf","images -- " + images.length + " --- " + info.getImages());
+//上传图片信息
+        if (info.getImageBeens() != null && info.getImageBeens().size()>=3){
+            Glide.with(context).load(info.getImageBeens().get(0).getPath()).dontAnimate().into(holder.image1);
+            Glide.with(context).load(info.getImageBeens().get(1).getPath()).dontAnimate().into(holder.image2);
+            Glide.with(context).load(info.getImageBeens().get(2).getPath()).dontAnimate().into(holder.image3);
+//                图片地址
+            L("qpf","图片地址 -- " + info.getImageBeens().get(0).getPath());
+            L("qpf","图片地址 -- " + info.getImageBeens().get(1).getPath());
+            L("qpf","图片地址 -- " + info.getImageBeens().get(2).getPath());
         }
 
         holder.mTvCreateTime.setText(TimeUtils.getTimeFormatText(info.getCreatedAt()));

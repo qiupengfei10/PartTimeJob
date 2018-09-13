@@ -16,4 +16,12 @@
         <item name="android:windowEnterAnimation">@anim/anim_pop_in</item>
         <item name="android:windowExitAnimation">@anim/anim_pop_out</item>
     </style>
+
+    <!--弹框的样式-->
+    <style name="CustomDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+
 </resources>

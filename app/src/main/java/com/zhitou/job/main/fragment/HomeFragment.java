@@ -1,5 +1,6 @@
 package com.zhitou.job.main.fragment;
 
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.widget.BaseAdapter;
 import android.widget.Toast;
@@ -64,12 +65,14 @@ public class HomeFragment extends BaseFragment{
     @Override
     protected void setUpData() {
         page = 1;
+        showLoading();
         getTwoHandList(page);
     }
 
     public void getTwoHandList(final int page) {
+        showLoading();
         BmobQuery<TwoHand> query = new BmobQuery<>();
-        query.include("PushUser");// 希望在查询帖子信息的同时也把发布人的信息查询出来
+        query.include("PushUser");// 需要返回用户信息
         query.setLimit(size);
         query.setSkip((page - 1) * size);
         query.findObjects(new FindListener<TwoHand>() {
@@ -78,7 +81,6 @@ public class HomeFragment extends BaseFragment{
                 if (e == null){
                     L("qpf",list.size()+"");
                     newTwoHands = list;
-
                     if (page == 1){  //第一页
                         twoHands.clear();
                         refreshLayout.setEnableLoadMore(true);
@@ -102,6 +104,7 @@ public class HomeFragment extends BaseFragment{
 
                 refreshLayout.finishRefresh();
                 refreshLayout.finishLoadMore();
+                dismissLoading();
             }
         });
     }

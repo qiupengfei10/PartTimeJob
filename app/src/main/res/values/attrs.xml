@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CircleTextView">
+        <attr name="text" format="string"></attr>
+    </declare-styleable>
+    <declare-styleable name="EaseChatMessageList">
+        <attr name="msgListMyBubbleBackground" format="reference" />
+        <attr name="msgListOtherBubbleBackground" format="reference" />
+        <attr name="msgListShowUserAvatar" format="boolean" />
+        <attr name="msgListShowUserNick" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="EaseConversationList">
+        <attr name="cvsListPrimaryTextColor" format="color" />
+        <attr name="cvsListSecondaryTextColor" format="color" />
+        <attr name="cvsListTimeTextColor" format="color" />
+        <attr name="cvsListPrimaryTextSize" format="dimension" />
+        <attr name="cvsListSecondaryTextSize" format="dimension" />
+        <attr name="cvsListTimeTextSize" format="dimension" />
+    </declare-styleable>
+    <attr name="borderRadius" format="dimension" />
+    <attr name="type">
+        <enum name="circle" value="0" />
+        <enum name="round" value="1" />
+    </attr>
+
+    <declare-styleable name="RoundImageView">
+        <attr name="borderRadius" />
+        <attr name="type" />
+    </declare-styleable>
+
+
+    <declare-styleable name="EaseContactList">
+        <attr name="ctsListPrimaryTextColor" format="color" />
+        <attr name="ctsListPrimaryTextSize" format="dimension" />
+        <attr name="ctsListShowSiderBar" format="boolean" />
+        <attr name="ctsListInitialLetterBg" format="reference|color" />
+        <attr name="ctsListInitialLetterColor" format="color" />
+    </declare-styleable>
+    -
+    <declare-styleable name="MyRadioButton">
+        <attr name="drawableSize" format="dimension" />
+        <attr name="drawableTop" format="reference" />
+        <attr name="drawableLeft" format="reference" />
+        <attr name="drawableRight" format="reference" />
+        <attr name="drawableBottom" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="EaseEmojiconMenu">
+        <attr name="bigEmojiconRows" format="integer" />
+        <attr name="emojiconColumns" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="EaseChatExtendMenu">
+        <attr name="numColumns" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="EaseTitleBar">
+        <attr name="titleBarTitle" format="string" />
+        <attr name="titleBarLeftImage" format="reference" />
+        <attr name="titleBarRightImage" format="reference" />
+        <attr name="titleBarBackground" format="reference|color" />
+    </declare-styleable>
+
+    <declare-styleable name="EaseSwitchButton">
+        <attr name="switchOpenImage" format="reference" />
+        <attr name="switchCloseImage" format="reference" />
+        <attr name="switchStatus">
+            <enum name="open" value="0" />
+            <enum name="close" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="EaseImageView">
+        <attr name="ease_border_color" format="color" />
+        <attr name="ease_border_width" format="dimension" />
+        <attr name="ease_press_alpha" format="integer" />
+        <attr name="ease_press_color" format="color" />
+        <attr name="ease_radius" format="dimension" />
+        <attr name="ease_shape_type" format="enum">
+            <enum name="none" value="0" />
+            <enum name="round" value="1" />
+            <enum name="rectangle" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="MagicTextView">
+        <attr name="innerShadowColor" format="color" />
+        <attr name="innerShadowRadius" format="float" />
+        <attr name="innerShadowDx" format="float" />
+        <attr name="innerShadowDy" format="float" />
+        <attr name="outerShadowColor" format="color" />
+        <attr name="outerShadowRadius" format="float" />
+        <attr name="outerShadowDx" format="float" />
+        <attr name="outerShadowDy" format="float" />
+        <attr name="typeface" format="string" />
+        <attr name="foreground" format="reference|color" />
+        <attr name="strokeWidth" format="float" />
+        <attr name="strokeMiter" format="float" />
+        <attr name="strokeColor" format="color" />
+        <attr name="strokeJoinStyle">
+            <enum name="miter" value="0" />
+            <enum name="bevel" value="1" />
+            <enum name="round" value="2" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="FlowLayout">
+
+        <attr name="lineSpacing" format="dimension" />
+
+        <attr name="maxLine" format="integer" />
+
+    </declare-styleable>
+
+
+    <attr name="interval" format="integer"/>
+    <attr name="showIndicator" format="boolean"/>
+    <attr name="orientation" format="enum">
+        <enum name="horizontal" value="0"/>
+        <enum name="vertical" value="1"/>
+    </attr>
+    <attr name="autoPlaying" format="boolean"/>
+    <declare-styleable name="RecyclerViewBannerBase">
+        <attr name="interval"/>
+        <attr name="showIndicator" />
+        <attr name="orientation" />
+        <attr name="autoPlaying"/>
+        <attr name="indicatorSelectedSrc" format="color|reference"/>
+        <attr name="indicatorUnselectedSrc" format="color|reference"/>
+        <attr name="indicatorSpace" format="dimension|reference"/>
+        <attr name="indicatorMarginLeft" format="dimension|reference"/>
+        <attr name="indicatorMarginRight" format="dimension|reference"/>
+        <attr name="indicatorMarginBottom" format="dimension|reference"/>
+        <attr name="indicatorGravity" format="enum">
+            <enum name="left" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="right" value="2"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="BannerLayout">
+        <attr name="interval" />
+        <attr name="showIndicator" />
+        <attr name="orientation" />
+        <attr name="autoPlaying"/>
+        <attr name="itemSpace" format="integer"/>
+        <attr name="centerScale" format="float"/>
+        <attr name="moveSpeed" format="float"/>
+    </declare-styleable>
+
+    <!--TabIndicator的参数设置-->
+    <declare-styleable name="PagerSlidingTab">
+        <attr name="indicatorColor" format="color" />
+        <attr name="underlineColor" format="color" />
+        <attr name="dividerColor" format="color" />
+        <attr name="indicatorHeight" format="dimension" />
+        <attr name="underlineHeight" format="dimension" />
+        <attr name="pst_dividerPadding" format="dimension" />
+        <attr name="tabPaddingLeftRight" format="dimension" />
+        <attr name="scrollOffset" format="dimension" />
+        <attr name="tabBackgrounds" format="reference" />
+        <attr name="sameLine" format="boolean" />
+        <attr name="pst_textAllCaps" format="boolean" />
+    </declare-styleable>
+</resources>

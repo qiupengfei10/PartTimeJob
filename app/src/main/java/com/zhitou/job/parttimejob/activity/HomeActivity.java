@@ -6,7 +6,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -28,7 +27,7 @@ import com.google.gson.Gson;
 import com.zhitou.job.R;
 import com.zhitou.job.parttimejob.adapter.HomeShopAdapter;
 import com.zhitou.job.parttimejob.base.BaseActivity;
-import com.zhitou.job.parttimejob.base.MyApplication;
+import com.zhitou.job.MyApplication;
 import com.zhitou.job.parttimejob.been.HomeBanner;
 import com.zhitou.job.parttimejob.been.HomeShop;
 import com.zhitou.job.parttimejob.been.MyUser;
@@ -37,11 +36,9 @@ import com.zhitou.job.parttimejob.fragments.FragmentBanner;
 import com.zhitou.job.parttimejob.utils.LocationUtil;
 import com.zhitou.job.parttimejob.view.UnScrollListView;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;

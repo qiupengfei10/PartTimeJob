@@ -9,22 +9,39 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zhitou.job.R;
+import com.zhitou.job.main.view.LoadingView;
+
 
 public abstract class BaseFragment extends Fragment{
     private View mContentView;
     private Context mContext;
+    private LoadingView loadingView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mContentView = inflater.inflate(setLayoutResourceID(),container,false);
-
 //        ButterKnife.bind(this,mContentView);
         mContext = getContext();
         init();
         setUpView();
         setUpData();
         return mContentView;
+    }
+
+    public void showLoading(){
+        if (loadingView == null){
+            loadingView = new LoadingView(getActivity(), R.style.CustomDialog);
+        }
+        loadingView.show();
+    }
+
+    public void dismissLoading(){
+        if (loadingView == null){
+            return;
+        }
+        loadingView.dismiss();
     }
 
     /**

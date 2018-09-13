@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,7 +19,10 @@ import com.zhitou.job.R;
 import com.zhitou.job.main.adapter.PushImageAdapter;
 import com.zhitou.job.main.been.ImageBeen;
 import com.zhitou.job.main.been.TwoHand;
+import com.zhitou.job.main.been.TwoHandSub;
 import com.zhitou.job.main.utils.AddressUtils;
+import com.zhitou.job.main.utils.CommonUtils;
+import com.zhitou.job.main.view.FlowLayout;
 import com.zhitou.job.parttimejob.activity.LoginActivity;
 import com.zhitou.job.parttimejob.base.BaseActivity;
 import com.zhitou.job.parttimejob.been.MyUser;
@@ -26,14 +30,17 @@ import com.zhitou.job.parttimejob.been.MyUser;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UploadBatchListener;
 
 /**
  * 发布二手页面
+ *
  */
 public class PushTwoHandActivity extends BaseActivity{
     public static final int IMAGE_PICKER = 1;
@@ -57,12 +64,19 @@ public class PushTwoHandActivity extends BaseActivity{
     private String province;
     private String area;
     private ArrayList<ImageBeen> pushImageList = new ArrayList<>();
+    private FlowLayout mFlTag;
+    private List<TwoHandSub> twoHandTags;
+
+    //当前选中的项
+    private TwoHandSub currentTHSub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_push_two_hand);
         initView();
+        //获取分类
+        getTwoHandSub();
 
         AddressUtils.getPCD(this,new AMapLocationListener() {
             @Override
@@ -102,6 +116,12 @@ public class PushTwoHandActivity extends BaseActivity{
             return false;
         }
 
+        //分类
+        if (currentTHSub == null){
+            showToast("请选择商品分类！");
+            return false;
+        }
+
         if (BmobUser.getCurrentUser(MyUser.class) == null){
             startActivity(new Intent(this, LoginActivity.class));
             return false;
@@ -115,7 +135,7 @@ public class PushTwoHandActivity extends BaseActivity{
             @Override
             public void onClick(View view) {
                 if (verifyEdt()){
-//                    sava();
+                    showLoading("上传中...");
                     pushImage(pushImageList);
                 }
             }
@@ -134,6 +154,7 @@ public class PushTwoHandActivity extends BaseActivity{
         mEdtPrice = (EditText)findViewById(R.id.edt_price); // 价格
         mTvAddress = (TextView) findViewById(R.id.tv_address); // 价格
         mRecycler = (RecyclerView) findViewById(R.id.recyclerview); // 价格
+        mFlTag = (FlowLayout)findViewById(R.id.fl_tag);
 
         mRecycler.setLayoutManager(new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL));
 
@@ -146,17 +167,18 @@ public class PushTwoHandActivity extends BaseActivity{
         twoHand.setTitle(title);
         twoHand.setPrice(price);
         twoHand.setImageBeens(pushImageList);
-        twoHand.setImages(images[(int) (Math.random() * 4)]+";"+images[(int) (Math.random() * 4)]+";"+images[(int) (Math.random() * 4)]);
-        twoHand.setSub("分类");
+        twoHand.setSub(currentTHSub.getName());
         twoHand.setPushUser(BmobUser.getCurrentUser(MyUser.class));
         twoHand.save(new SaveListener<String>() {
             @Override
             public void done(String s, BmobException e) {
                 if (e == null){
                     showToast("保存成功！");
+                    finish();
                 }else {
                     showToast("保存失败！" + e);
                 }
+                dismissLoading();
             }
         });
     }
@@ -177,30 +199,28 @@ public class PushTwoHandActivity extends BaseActivity{
                 //2、urls-上传文件的完整url地址
                 if(urls.size()==paths.length){//如果数量相等，则代表文件全部上传完成
                     //do something
-                    showToast("上传图片完成！");
                     for (int i = 0; i < paths.length;i++){
                         Log.e("qpf","图片原始地址 -- " + paths[i] + " --- 图片的网络地址 --- " + files.get(i).getFilename());
 
-                        if (pushImageList.get(i).getPath().equals(files.get(i).getFilename())){
+                        if (pushImageList.get(i).getPath().contains(files.get(i).getFilename())){
                             pushImageList.get(i).setPath(urls.get(i));
                         }else {
                             for (int j = 0;j < pushImageList.size();j++){
-                                if (pushImageList.get(i).getPath().equals(files.get(i).getFilename())){
+                                if (pushImageList.get(i).getPath().contains(files.get(i).getFilename())){
                                     pushImageList.get(i).setPath(urls.get(i));
                                 }
                             }
                         }
                         pushImageList.get(i).save();
                     }
-
                     sava();
-
                 }
             }
 
             @Override
             public void onError(int statuscode, String errormsg) {
                 showToast("错误码"+statuscode +",错误描述："+errormsg);
+                dismissLoading();
             }
 
             @Override
@@ -247,4 +267,56 @@ public class PushTwoHandActivity extends BaseActivity{
         }
     }
 
+    public void getTwoHandSub() {
+        showLoading();
+        BmobQuery<TwoHandSub> query = new BmobQuery<>();
+        query.findObjects(new FindListener<TwoHandSub>() {
+            @Override
+            public void done(List<TwoHandSub> list, BmobException e) {
+                if (e == null){
+                    //所有的分类
+                    twoHandTags = list;
+                    initTag(twoHandTags);
+                }
+                dismissLoading();
+            }
+        });
+    }
+
+    /**
+     * 标签
+     */
+    public void initTag(final List<TwoHandSub> twoHandTags){
+        mFlTag.removeAllViews();
+        for (int i = 0; i < twoHandTags.size(); i++) {
+            final TextView tv = (TextView) LayoutInflater.from(this).inflate(
+                    R.layout.item_two_hand_tag, mFlTag, false);
+            tv.setText(twoHandTags.get(i).getName());
+
+            //判断是否选中
+            if (!twoHandTags.get(i).isCheck()){
+                tv.setBackgroundResource(R.drawable.label);
+                tv.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+            }else {
+                tv.setBackgroundResource(R.drawable.label_full);
+                tv.setTextColor(getResources().getColor(R.color.white));
+            }
+
+            //点击事件
+            final int finalI = i;
+            tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    CommonUtils.showToast( "该标签已经存在了",PushTwoHandActivity.this);
+                    for (TwoHandSub t : twoHandTags) {
+                        t.setCheck(false);
+                    }
+                    twoHandTags.get(finalI).setCheck(true);
+                    currentTHSub = twoHandTags.get(finalI);
+                    initTag(twoHandTags);
+                }
+            });
+            mFlTag.addView(tv);//添加到父View
+        }
+    }
 }

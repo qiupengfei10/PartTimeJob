@@ -6,12 +6,9 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.telephony.CellSignalStrengthWcdma;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -23,20 +20,14 @@ import android.widget.TextView;
 
 import com.zhitou.job.R;
 import com.zhitou.job.parttimejob.base.BaseActivity;
-import com.zhitou.job.parttimejob.base.MyApplication;
 import com.zhitou.job.parttimejob.been.MyUser;
 import com.zhitou.job.parttimejob.utils.ImageUtils;
 
-import java.io.File;
-import java.net.URL;
-import java.text.BreakIterator;
 import java.util.List;
 
-import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.BmobUpdateListener;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadBatchListener;
 

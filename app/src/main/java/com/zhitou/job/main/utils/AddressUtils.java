@@ -5,7 +5,6 @@ import android.content.Context;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
-import com.zhitou.job.parttimejob.base.MyApplication;
 
 /**
  * Created by LCH on 2018/9/12.

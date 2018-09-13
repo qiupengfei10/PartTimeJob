@@ -1,6 +1,5 @@
 package com.zhitou.job.parttimejob.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.TextView;
 
 import com.zhitou.job.R;
 import com.zhitou.job.parttimejob.base.BaseActivity;
-import com.zhitou.job.parttimejob.base.MyApplication;
 import com.zhitou.job.parttimejob.been.MyUser;
 import com.zhitou.job.parttimejob.utils.VerifyUtil;
 

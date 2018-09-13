@@ -8,7 +8,6 @@ import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.BmobUser;
 
 public class TwoHand extends BmobObject {
-    private String Images;
     private String Title;
     private String Content;
     private String Address;
@@ -33,14 +32,6 @@ public class TwoHand extends BmobObject {
 
     public void setPushUser(MyUser pushUser) {
         PushUser = pushUser;
-    }
-
-    public String getImages() {
-        return Images;
-    }
-
-    public void setImages(String images) {
-        Images = images;
     }
 
     public String getTitle() {

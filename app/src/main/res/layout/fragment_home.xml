@@ -1,43 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/base_title"/>
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/refreshLayout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#444444"
-        app:srlPrimaryColor="#444444"
-        app:srlAccentColor="@android:color/white"
-        app:srlEnablePreviewInEditMode="true">
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <include layout="@layout/base_title"/>
 
-    <!--srlAccentColor srlPrimaryColor 将会改变 Header 和 Footer 的主题颜色-->
-    <!--srlEnablePreviewInEditMode 可以开启和关闭预览功能-->
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:background="#444444"
+            app:srlPrimaryColor="#444444"
+            app:srlAccentColor="@android:color/white"
+            app:srlEnablePreviewInEditMode="true">
 
-            <com.zhitou.job.main.view.NoScrollListView
-                android:id="@+id/listview"
-                android:divider="@null"
+            <!--srlAccentColor srlPrimaryColor 将会改变 Header 和 Footer 的主题颜色-->
+            <!--srlEnablePreviewInEditMode 可以开启和关闭预览功能-->
+            <android.support.v4.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></com.zhitou.job.main.view.NoScrollListView>
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
 
-            <include layout="@layout/item_es_product"/>
-            <include layout="@layout/item_es_product"/>
-            <include layout="@layout/item_es_product"/>
-            <include layout="@layout/item_es_product"/>
-            <include layout="@layout/item_es_product"/>
-            <include layout="@layout/item_es_product"/>
-        </LinearLayout>
+                    <com.zhitou.job.main.view.NoScrollListView
+                        android:id="@+id/listview"
+                        android:divider="@null"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"></com.zhitou.job.main.view.NoScrollListView>
 
-    </android.support.v4.widget.NestedScrollView>
-    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-</LinearLayout>
+                    <include layout="@layout/item_es_product"/>
+                    <include layout="@layout/item_es_product"/>
+                    <include layout="@layout/item_es_product"/>
+                    <include layout="@layout/item_es_product"/>
+                    <include layout="@layout/item_es_product"/>
+                    <include layout="@layout/item_es_product"/>
+                </LinearLayout>
+
+            </android.support.v4.widget.NestedScrollView>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>
