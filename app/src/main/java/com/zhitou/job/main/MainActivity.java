@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.RadioGroup;
 
 import com.zhitou.job.R;
+import com.zhitou.job.main.fragment.FragmentShowMe;
 import com.zhitou.job.main.fragment.HomeFragment;
 import com.zhitou.job.main.fragment.TaoBaoFragment;
 import com.zhitou.job.parttimejob.base.BaseActivity;
@@ -76,7 +77,7 @@ public class MainActivity extends BaseActivity {
                     transaction.add(R.id.fl_content,fragments[1]);
                     break;
                 case 2:
-                    fragments[2] = new HomeFragment();
+                    fragments[2] = new FragmentShowMe();
                     transaction.add(R.id.fl_content,fragments[2]);
                     break;
                 case 3:
