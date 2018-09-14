@@ -2,12 +2,13 @@ package com.zhitou.job.main.been;
 
 import com.zhitou.job.parttimejob.been.MyUser;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.BmobUser;
 
-public class TwoHand extends BmobObject {
+public class TwoHand extends BmobObject implements Serializable{
     private String Title;
     private String Content;
     private String Address;

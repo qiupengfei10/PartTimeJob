@@ -1,5 +1,7 @@
 package com.zhitou.job.main.been;
 
+import java.io.Serializable;
+
 import cn.bmob.v3.BmobObject;
 
 /**
@@ -7,7 +9,7 @@ import cn.bmob.v3.BmobObject;
  *
  * 图片的长宽高
  */
-public class ImageBeen extends BmobObject{
+public class ImageBeen extends BmobObject implements Serializable{
 
     private String with;
     private String height;

@@ -1,9 +1,14 @@
 package com.zhitou.job;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
+import android.util.DisplayMetrics;
+import android.util.Log;
 
+import com.alibaba.baichuan.android.trade.AlibcTradeSDK;
+import com.alibaba.baichuan.android.trade.callback.AlibcTradeInitCallback;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.view.CropImageView;
 import com.lzy.okgo.OkGo;
@@ -36,7 +41,8 @@ import okhttp3.OkHttpClient;
  * Created by qiupengfei on 2017/10/11.
  */
 public class MyApplication extends Application{
-
+    public static int windowwidth ;
+    public static int windowheight ;
     public static MyApplication ourInstance = new MyApplication();
     public static ImagePicker imagePicker;
 
@@ -55,6 +61,34 @@ public class MyApplication extends Application{
         Bmob.initialize(this,"00486c3673bc2dd80341ca35b507659b");
         initPicSelect();
         initOkGo();
+        initWin();
+        initTaoBao(); //初始化淘宝
+    }
+
+    private void initTaoBao() {
+        AlibcTradeSDK.asyncInit(this, new AlibcTradeInitCallback() {
+            @Override
+            public void onSuccess() {
+                //初始化成功后
+                Log.e("qpf","初始化成功 --- ");
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                //初始化失败
+                Log.e("qpf","初始化失败 --- ("+i+","+s+")");
+            }
+        });
+    }
+
+    private void initWin() {
+        DisplayMetrics dm = getResources().getDisplayMetrics();
+        MyApplication.windowwidth = dm.widthPixels;
+        MyApplication.windowheight = dm.heightPixels;
+        Log.e("qpf","屏幕的宽高 -- （" + windowwidth + "," + windowheight + "） --- " + System.currentTimeMillis());
+        ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        int memorySize = activityManager.getMemoryClass();
+        Log.e("qpf","分配给"+R.string.app_name+"app的内存大小 --- " + memorySize + "M");
     }
 
     private void initOkGo() {

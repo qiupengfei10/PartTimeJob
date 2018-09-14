@@ -1,7 +1,10 @@
 package com.zhitou.job.main.fragment;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Toast;
 
@@ -10,6 +13,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.zhitou.job.R;
+import com.zhitou.job.main.activity.TwoHandDetailActivity;
 import com.zhitou.job.main.adapter.TwoHandAdapter;
 import com.zhitou.job.main.base.BaseFragment;
 import com.zhitou.job.main.been.TwoHand;
@@ -60,6 +64,15 @@ public class HomeFragment extends BaseFragment{
                 getTwoHandList(page);
             }
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), TwoHandDetailActivity.class);
+                intent.putExtra("twoHand",twoHands.get(position));
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -73,7 +86,9 @@ public class HomeFragment extends BaseFragment{
         showLoading();
         BmobQuery<TwoHand> query = new BmobQuery<>();
         query.include("PushUser");// 需要返回用户信息
+        query.order("-createdAt");
         query.setLimit(size);
+
         query.setSkip((page - 1) * size);
         query.findObjects(new FindListener<TwoHand>() {
             @Override

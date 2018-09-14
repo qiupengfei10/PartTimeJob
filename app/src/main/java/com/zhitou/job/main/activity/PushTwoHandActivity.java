@@ -1,4 +1,4 @@
-package com.zhitou.job.main;
+package com.zhitou.job.main.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,7 +21,6 @@ import com.zhitou.job.main.been.ImageBeen;
 import com.zhitou.job.main.been.TwoHand;
 import com.zhitou.job.main.been.TwoHandSub;
 import com.zhitou.job.main.utils.AddressUtils;
-import com.zhitou.job.main.utils.CommonUtils;
 import com.zhitou.job.main.view.FlowLayout;
 import com.zhitou.job.parttimejob.activity.LoginActivity;
 import com.zhitou.job.parttimejob.base.BaseActivity;
@@ -53,13 +52,6 @@ public class PushTwoHandActivity extends BaseActivity{
     private String title;
     private String content;
     private String price;
-    private String[] images = new String[]{
-            "https://gss0.bdstatic.com/70cFfyinKgQIm2_p8IuM_a/daf/pic/item/d833c895d143ad4b164d6bea8f025aafa40f06bc.jpg",
-            "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2875653198,2481124055&fm=27&gp=0.jpg",
-            "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3034550788,1048580024&fm=200&gp=0.jpg",
-            "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=919673108,713933726&fm=200&gp=0.jpg",
-            "https://ss0.bdstatic.com/-0U0b8Sm1A5BphGlnYG/kmarketingadslogo/fb51462a975cc4a1f5e3d075ec98e74c_259_194.jpg",
-    };
     private String city;
     private String province;
     private String area;

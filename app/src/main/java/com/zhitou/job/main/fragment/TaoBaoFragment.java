@@ -52,6 +52,7 @@ public class TaoBaoFragment extends BaseFragment {
 
         mAdapter = new MyPagerAdapter(getFragmentManager());
         mViewPager.setAdapter(mAdapter);
+        mViewPager.setOffscreenPageLimit(1);
         mStl.setViewPager(mViewPager);
     }
 

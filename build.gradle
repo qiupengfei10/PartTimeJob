@@ -24,6 +24,12 @@ allprojects {
         maven {
             url "https://dl.bintray.com/tencentqcloudterminal/maven"
         }
+        maven {
+            url "http://repo.baichuan-android.taobao.com/content/groups/BaichuanRepositories/"
+        }
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/repositories/releases/'
+        }
         google()
     }
 }

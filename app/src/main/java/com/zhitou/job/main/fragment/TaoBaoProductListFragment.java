@@ -1,6 +1,7 @@
 package com.zhitou.job.main.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,6 +16,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.zhitou.job.R;
+import com.zhitou.job.main.activity.ProductDetailActivity;
 import com.zhitou.job.main.adapter.TaoBaoProductAdapter;
 import com.zhitou.job.main.been.TaoBaoBeen;
 import com.zhitou.job.main.constant.Constant;
@@ -28,7 +30,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
 
 /**
  * Created by LCH on 2018/9/13.
@@ -98,10 +99,10 @@ public class TaoBaoProductListFragment extends Fragment{
     }
 
     private void showDetailNew(String numIid,String shopName) {
-//        Intent intent = new Intent(getActivity(), ProductDetailActivity.class);
-//        intent.putExtra("itemId",numIid);
-//        intent.putExtra("shopName",shopName);
-//        startActivity(intent);
+        Intent intent = new Intent(getActivity(), ProductDetailActivity.class);
+        intent.putExtra("itemId",numIid);
+        intent.putExtra("shopName",shopName);
+        startActivity(intent);
     }
 
     @Override

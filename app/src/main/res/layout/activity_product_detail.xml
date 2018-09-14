@@ -19,6 +19,11 @@
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_height="match_parent">
+            <com.youth.banner.Banner
+                android:id="@+id/iv_banner"
+                android:background="@color/line_gray_color"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"></com.youth.banner.Banner>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -212,14 +217,14 @@
 
             </LinearLayout>
 
-            <cn.yhbh.miaoji.common.view.NoScrollGridView
+            <com.zhitou.job.main.view.NoScrollGridView
                 android:id="@+id/gridview"
                 android:numColumns="2"
                 android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-            </cn.yhbh.miaoji.common.view.NoScrollGridView>
+            </com.zhitou.job.main.view.NoScrollGridView>
 
 
         </LinearLayout>

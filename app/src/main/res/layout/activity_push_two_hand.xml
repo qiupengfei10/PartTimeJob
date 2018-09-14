@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="com.zhitou.job.main.PushTwoHandActivity">
+    tools:context="com.zhitou.job.main.activity.PushTwoHandActivity">
 
     <include layout="@layout/base_title"/>
 
