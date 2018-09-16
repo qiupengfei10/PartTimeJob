@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:descendantFocusability="blocksDescendants"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".main.activity.TwoHandDetailActivity">
@@ -298,6 +297,12 @@
                 android:background="@color/line_gray_color"
                 android:layout_height="0.5dp" />
 
+            <com.zhitou.job.main.view.NoScrollListView
+                android:id="@+id/listview_comment"
+                android:divider="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></com.zhitou.job.main.view.NoScrollListView>
+
             <LinearLayout
                 android:id="@+id/ll_null"
                 android:orientation="vertical"
@@ -342,91 +347,140 @@
     </android.support.v4.widget.NestedScrollView>
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:background="@color/white"
         android:elevation="5dp"
-        android:paddingTop="5dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
         android:layout_height="45dp">
+
+        <!-- 底部菜单 -->
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1.5"
-            android:layout_height="wrap_content">
-
+            android:id="@+id/ll_bottom_menu"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical"
+                android:layout_weight="1.5"
                 android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_width="20dp"
-                    android:src="@mipmap/default_image"
-                    android:layout_height="20dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:text="卖家"
-                    android:textSize="10sp"
-                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:src="@mipmap/default_image"
+                        android:layout_height="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="卖家"
+                        android:textSize="10sp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:src="@mipmap/default_image"
+                        android:layout_height="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="想要"
+                        android:textSize="10sp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ll_comment"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:src="@mipmap/default_image"
+                        android:layout_height="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="问卖家"
+                        android:textSize="10sp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
             </LinearLayout>
-            <LinearLayout
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_margin="5dp"
+                android:text="买前聊一聊"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:background="@drawable/shape_main_yollow"
+                android:layout_height="match_parent" />
+            <TextView
+                android:id="@+id/tv_buy"
+                android:layout_width="wrap_content"
+                android:layout_margin="5dp"
+                android:text="马上买"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:background="@drawable/shape_main"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <!-- 底部菜单结束 -->
+
+        <LinearLayout
+            android:id="@+id/ll_edt_comment"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:padding="5dp"
+            android:visibility="gone"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/edt_comment_content"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:hint="问问更多细节"
+                android:textSize="14sp"
+                android:padding="8dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_width="20dp"
-                    android:src="@mipmap/default_image"
-                    android:layout_height="20dp" />
+                android:background="@drawable/shape_kuan"
+                android:layout_height="wrap_content" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:text="想要"
-                    android:textSize="10sp"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_width="20dp"
-                    android:src="@mipmap/default_image"
-                    android:layout_height="20dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:text="问卖家"
-                    android:textSize="10sp"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_push_comment"
+                android:layout_width="wrap_content"
+                android:text="发送"
+                android:padding="8dp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_main"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_margin="5dp"
-            android:text="买前聊一聊"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:padding="5dp"
-            android:background="@drawable/shape_main_yollow"
-            android:layout_height="match_parent" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_margin="5dp"
-            android:text="马上买"
-            android:padding="5dp"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:background="@drawable/shape_main"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

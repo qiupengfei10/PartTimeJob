@@ -88,7 +88,9 @@
         <activity android:name=".main.activity.PushTwoHandActivity" />
         <activity android:name=".main.activity.ProductDetailActivity" />
         <activity android:name=".main.activity.WatchImageActivity" />
-        <activity android:name=".main.activity.TwoHandDetailActivity"></activity>
+        <activity android:name=".main.activity.TwoHandDetailActivity" />
+        <activity android:name=".main.activity.AffirmOrderActivity" />
+        <activity android:name=".main.activity.AddAddressSHActivity"></activity>
     </application>
 
 </manifest>
