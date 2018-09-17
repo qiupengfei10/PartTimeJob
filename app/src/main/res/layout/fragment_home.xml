@@ -49,5 +49,10 @@
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btn_go_chat"
+        android:layout_width="wrap_content"
+        android:text="聊天"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

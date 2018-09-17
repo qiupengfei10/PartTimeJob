@@ -141,17 +141,20 @@ dependencies {
     implementation 'com.aliyun.ams:alicloud-android-ut:5.1.0'
     implementation 'com.aliyun.ams:alicloud-android-utils:1.1.1'
 
-    //即时通讯
-    implementation project(path: ':presentation')
-    implementation project(path: ':tlslibrary')
-    implementation project(path: ':ui')
     implementation project(':sdk')
+    implementation project(':presentation')
+    implementation project(':tlslibrary')
+    implementation project(':ui')
 
     //支付相关的
-//    implementation(name: 'paysdk-release-1.2.2', ext: 'aar')
+
+    //    implementation(name: 'paysdk-release-1.2.2', ext: 'aar')
 
     //paysdk-release-1.2.2(sdk名称)
-//    implementation files('libs/paysdk-release-1.2.2.jar'){
-//        exclude (module: 'alicloud-android-utdid')
-//    }
+
+    //    implementation files('libs/paysdk-release-1.2.2.jar'){
+
+    //        exclude (module: 'alicloud-android-utdid')
+
+    //    }
 }

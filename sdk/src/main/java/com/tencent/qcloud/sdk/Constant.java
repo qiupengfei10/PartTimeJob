@@ -5,7 +5,7 @@ package com.tencent.qcloud.sdk;
  */
 public class Constant {
 
-    public static final int ACCOUNT_TYPE = 36913;
+    public static final int ACCOUNT_TYPE = 32873;
     //sdk appid 由腾讯分配
-    public static final int SDK_APPID = 1400132430;
+    public static final int SDK_APPID = 1400118796;
 }

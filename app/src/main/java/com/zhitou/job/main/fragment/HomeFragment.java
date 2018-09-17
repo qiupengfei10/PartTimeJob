@@ -13,6 +13,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.zhitou.job.R;
+import com.zhitou.job.chat.ui.SplashActivity;
 import com.zhitou.job.main.activity.TwoHandDetailActivity;
 import com.zhitou.job.main.adapter.TwoHandAdapter;
 import com.zhitou.job.main.base.BaseFragment;
@@ -71,6 +72,13 @@ public class HomeFragment extends BaseFragment{
                 Intent intent = new Intent(getActivity(), TwoHandDetailActivity.class);
                 intent.putExtra("twoHand",twoHands.get(position));
                 startActivity(intent);
+            }
+        });
+
+        getContentView().findViewById(R.id.btn_go_chat).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), SplashActivity.class));
             }
         });
     }

@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.util.Log;
 
 
+import com.zhitou.job.MyApplication;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 

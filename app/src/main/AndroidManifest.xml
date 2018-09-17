@@ -61,6 +61,102 @@
             android:name="com.alibaba.app.applink.backurl"
             android:value="http://mjcos.com/Images/logo.png" />
 
+        <!-- 聊天相关界面 -->
+
+        <activity
+            android:name=".chat.ui.SplashActivity"
+            android:screenOrientation="portrait">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity android:name=".chat.ui.HomeActivity" />
+        <activity
+            android:name=".chat.ui.ChatActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".chat.ui.SearchFriendActivity" />
+        <activity android:name=".chat.ui.AddFriendActivity" />
+        <activity
+            android:name=".chat.ui.ProfileActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".chat.ui.ManageFriendGroupActivity" />
+        <activity
+            android:name=".chat.ui.VideoActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".chat.ui.CreateGroupActivity" />
+        <activity
+            android:name=".chat.ui.TCVideoRecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".chat.ui.TCVideoPreviewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".chat.ui.GroupProfileActivity"
+            android:launchMode="singleTask" />
+
+        <!-- 消息收发service -->
+        <service
+            android:name="com.tencent.qalsdk.service.QalService"
+            android:exported="false"
+            android:process=":QALSERVICE" />
+        <service
+            android:name="com.tencent.qalsdk.service.QalAssistService"
+            android:exported="false"
+            android:process=":QALSERVICE" />
+        <!-- 离线消息广播接收器 -->
+        <receiver
+            android:name="com.tencent.qalsdk.QALBroadcastReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.tencent.qalsdk.broadcast.qal" />
+            </intent-filter>
+        </receiver>
+        <!-- 系统消息广播接收器 -->
+        <receiver
+            android:name="com.tencent.qalsdk.core.NetConnInfoCenter"
+            android:process=":QALSERVICE">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.qalsdk.service.TASK_REMOVED" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".chat.ui.ImageViewActivity" />
+        <activity android:name=".chat.ui.EditActivity" />
+        <activity android:name=".chat.ui.SearchGroupActivity" />
+        <activity android:name=".chat.ui.ApplyGroupActivity" />
+        <activity android:name=".chat.ui.GroupManageMessageActivity" />
+        <activity android:name=".chat.ui.FriendshipManageMessageActivity" />
+        <activity android:name=".chat.ui.GroupListActivity" />
+        <activity android:name=".chat.ui.ChooseFriendActivity" />
+        <activity android:name=".chat.ui.GroupMemberActivity" />
+        <activity
+            android:name=".chat.ui.customview.DialogActivity"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity android:name=".chat.ui.GroupMemberProfileActivity" />
+        <activity android:name=".chat.ui.FriendshipHandleActivity" />
+        <activity android:name=".chat.ui.AboutActivity" />
+        <activity android:name=".chat.ui.BlackListActivity" />
+        <activity android:name=".chat.ui.ImagePreviewActivity" />
+        <activity android:name=".chat.ui.MessageNotifySettingActivity" />
+
         <activity android:name=".parttimejob.activity.MainActivity" />
         <activity android:name=".parttimejob.activity.ShopMainActivity" />
         <activity android:name=".parttimejob.activity.GuideActivity" />
