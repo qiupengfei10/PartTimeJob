@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
@@ -26,6 +28,13 @@ import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.tencent.imsdk.TIMGroupReceiveMessageOpt;
+import com.tencent.imsdk.TIMManager;
+import com.tencent.imsdk.TIMOfflinePushListener;
+import com.tencent.imsdk.TIMOfflinePushNotification;
+import com.tencent.qalsdk.sdk.MsfSdkUtils;
+import com.umeng.socialize.utils.UmengText;
+import com.zhitou.job.chat.utils.Foreground;
 import com.zhitou.job.main.utils.PicassoImageLoader;
 import com.zhitou.job.parttimejob.been.MyUser;
 
@@ -45,7 +54,7 @@ public class MyApplication extends Application{
     public static int windowheight ;
     public static MyApplication ourInstance = new MyApplication();
     public static ImagePicker imagePicker;
-
+    private static Context context;
     public static MyApplication getInstance() {
         return ourInstance;
     }
@@ -55,6 +64,10 @@ public class MyApplication extends Application{
 
     public static List<Activity> activities = new ArrayList<>();
 
+    public static Context getContext() {
+        return context;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -63,6 +76,24 @@ public class MyApplication extends Application{
         initOkGo();
         initWin();
         initTaoBao(); //初始化淘宝
+        initChat();
+
+    }
+
+    private void initChat() {
+        Foreground.init(this);
+        context = getApplicationContext();
+        if(MsfSdkUtils.isMainProcess(this)) {
+            TIMManager.getInstance().setOfflinePushListener(new TIMOfflinePushListener() {
+                @Override
+                public void handleNotification(TIMOfflinePushNotification notification) {
+                    if (notification.getGroupReceiveMsgOpt() == TIMGroupReceiveMessageOpt.ReceiveAndNotify){
+                        //消息被设置为需要提醒
+                        notification.doNotify(getApplicationContext(), R.mipmap.ic_launcher);
+                    }
+                }
+            });
+        }
     }
 
     private void initTaoBao() {
@@ -81,6 +112,7 @@ public class MyApplication extends Application{
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.ECLAIR)
     private void initWin() {
         DisplayMetrics dm = getResources().getDisplayMetrics();
         MyApplication.windowwidth = dm.widthPixels;

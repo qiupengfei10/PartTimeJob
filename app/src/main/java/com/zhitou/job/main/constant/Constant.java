@@ -4,6 +4,7 @@ package com.zhitou.job.main.constant;
  * Created by LCH on 2018/9/13.
  */
 public class Constant {
+    public static String TR_PAY_APPKEY = "abab2e460219495da06ee4ca26ef6d31";
 
     //    淘宝客的域名
     private static String TAOBAO_LINKURIPRE = "http://tbk.mjcos.com:80";

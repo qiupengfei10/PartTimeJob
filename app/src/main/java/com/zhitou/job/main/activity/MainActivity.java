@@ -26,6 +26,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main_new);
         initView();
         initClick();
+//        TrPay.getInstance(this).initPaySdk(Constant.TR_PAY_APPKEY,"all");
     }
 
     private void initClick() {

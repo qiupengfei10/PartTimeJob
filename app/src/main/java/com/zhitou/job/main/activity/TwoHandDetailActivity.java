@@ -136,9 +136,9 @@ public class TwoHandDetailActivity extends BaseActivity {
         findViewById(R.id.tv_buy).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TwoHandDetailActivity.this,AffirmOrderActivity.class);
-                intent.putExtra("twoHand",twoHand);
-                startActivity(intent);
+//                Intent intent = new Intent(TwoHandDetailActivity.this,AffirmOrderActivity.class);
+//                intent.putExtra("twoHand",twoHand);
+//                startActivity(intent);
             }
         });
     }

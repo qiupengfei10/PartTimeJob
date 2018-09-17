@@ -428,11 +428,12 @@
                 android:gravity="center"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
+                android:paddingLeft="80dp"
+                android:paddingRight="80dp"
                 android:background="@drawable/shape_main_yollow"
                 android:layout_height="match_parent" />
             <TextView
+                android:visibility="gone"
                 android:id="@+id/tv_buy"
                 android:layout_width="wrap_content"
                 android:layout_margin="5dp"

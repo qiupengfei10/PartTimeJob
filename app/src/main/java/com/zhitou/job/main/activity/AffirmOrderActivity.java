@@ -12,6 +12,7 @@ import com.zhitou.job.R;
 import com.zhitou.job.main.been.AddressForSH;
 import com.zhitou.job.main.been.TwoHand;
 import com.zhitou.job.main.utils.GlideUtils;
+import com.zhitou.job.main.utils.PayUtils;
 import com.zhitou.job.parttimejob.base.BaseActivity;
 import com.zhitou.job.parttimejob.been.MyUser;
 
@@ -39,6 +40,18 @@ public class AffirmOrderActivity extends BaseActivity {
     private TextView mTvName;
     private TextView mTvPhone;
     private TextView mTvAddress;
+    private TextView mTvProductPrice;
+    private TextView mTvPostagePrice;
+    private TextView mTvLuckyMoney;
+    private TextView mTvTotalPrice ;
+
+    //商品总价
+    private double productPrice;
+    //运费
+    private double postagePrice;
+    //红包
+    private double luckyMoney;
+    private TextView mTvPostageShow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +76,15 @@ public class AffirmOrderActivity extends BaseActivity {
         GlideUtils.showPic(this,twoHand.getImageBeens().get(0).getPath(),mIvPriductImage);
         GlideUtils.showPic(this,twoHand.getPushUser().getUserImage(),mIvUserLogo);
 
+        //
+        mTvProductPrice.setText("¥"+twoHand.getPrice());
+        mTvPostagePrice.setText("+¥"+twoHand.getPostage());
+        mTvLuckyMoney.setText("暂无可用红包");
+
+        //计算总价
+        double totalPrice = Double.parseDouble(twoHand.getPrice()) + Double.parseDouble(twoHand.getPostage());
+        mTvTotalPrice.setText(totalPrice+"");
+        mTvPostageShow.setText("快递费：¥"+twoHand.getPostage());
     }
 
     private void initView() {
@@ -76,10 +98,29 @@ public class AffirmOrderActivity extends BaseActivity {
         mTvPhone = (TextView)findViewById(R.id.tv_phone);
         mTvAddress = (TextView)findViewById(R.id.tv_address);
 
+
+        mTvTotalPrice = (TextView)findViewById(R.id.tv_total_price);
+
+
+        //商品价格
+        mTvProductPrice = (TextView) findViewById(R.id.tv_product_price);
+        //邮费
+        mTvPostagePrice = (TextView) findViewById(R.id.tv_postage);
+        mTvPostageShow = (TextView) findViewById(R.id.tv_postage_show);
+        //红包
+        mTvLuckyMoney = (TextView) findViewById(R.id.tv_lucky_money);
+
         findViewById(R.id.ll_address).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(AffirmOrderActivity.this,AddAddressSHActivity.class));
+            }
+        });
+
+        findViewById(R.id.tv_buy).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                PayUtils.pay(AffirmOrderActivity.this,"商品名称","329895943kjfdjkgfkrtgj",39183,"","","");
             }
         });
     }

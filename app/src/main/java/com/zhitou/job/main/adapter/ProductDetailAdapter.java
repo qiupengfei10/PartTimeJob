@@ -51,6 +51,7 @@ public class ProductDetailAdapter extends BaseAdapter{
 
         String info = data.get(position);
 
+
         if (convertView == null){
             holder = new ViewHolder();
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_picture_img,null);

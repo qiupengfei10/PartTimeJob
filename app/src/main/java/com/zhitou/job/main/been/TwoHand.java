@@ -14,14 +14,22 @@ public class TwoHand extends BmobObject implements Serializable{
     private String Address;
     private String Price;
     private String Sub;
-
-    private ArrayList<ImageBeen> imageBeens;
-
+    private String Postage; //邮费
     private MyUser PushUser;
+    private ArrayList<ImageBeen> imageBeens;
 
     public ArrayList<ImageBeen> getImageBeens() {
         return imageBeens;
     }
+
+    public String getPostage() {
+        return Postage;
+    }
+
+    public void setPostage(String postage) {
+        Postage = postage;
+    }
+
 
     public void setImageBeens(ArrayList<ImageBeen> imageBeens) {
         this.imageBeens = imageBeens;
