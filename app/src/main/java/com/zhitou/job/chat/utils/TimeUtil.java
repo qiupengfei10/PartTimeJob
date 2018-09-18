@@ -1,6 +1,5 @@
 package com.zhitou.job.chat.utils;
 
-
 import com.zhitou.job.MyApplication;
 import com.zhitou.job.R;
 

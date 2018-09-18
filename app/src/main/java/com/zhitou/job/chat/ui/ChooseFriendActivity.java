@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
-import com.tencent.qcloud.ui.TemplateTitle;
 import com.zhitou.job.R;
+import com.tencent.qcloud.ui.TemplateTitle;
 import com.zhitou.job.chat.adapters.ExpandGroupListAdapter;
 import com.zhitou.job.chat.model.FriendProfile;
 import com.zhitou.job.chat.model.FriendshipInfo;

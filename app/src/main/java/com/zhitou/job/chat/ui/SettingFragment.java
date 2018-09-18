@@ -17,9 +17,9 @@ import com.tencent.imsdk.TIMUserProfile;
 import com.tencent.qcloud.presentation.business.LoginBusiness;
 import com.tencent.qcloud.presentation.presenter.FriendshipManagerPresenter;
 import com.tencent.qcloud.presentation.viewfeatures.FriendInfoView;
+import com.zhitou.job.R;
 import com.tencent.qcloud.ui.LineControllerView;
 import com.tencent.qcloud.ui.ListPickerDialog;
-import com.zhitou.job.R;
 
 import java.util.HashMap;
 import java.util.List;

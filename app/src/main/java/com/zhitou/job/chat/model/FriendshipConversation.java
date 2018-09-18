@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.tencent.imsdk.ext.sns.TIMFriendFutureItem;
-import com.zhitou.job.MyApplication;
 import com.zhitou.job.R;
+import com.zhitou.job.MyApplication;
 import com.zhitou.job.chat.ui.FriendshipManageMessageActivity;
 
 /**

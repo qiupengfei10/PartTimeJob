@@ -9,8 +9,8 @@ import android.widget.ListView;
 
 import com.tencent.imsdk.ext.group.TIMGroupCacheInfo;
 import com.tencent.qcloud.presentation.event.GroupEvent;
-import com.tencent.qcloud.ui.TemplateTitle;
 import com.zhitou.job.R;
+import com.tencent.qcloud.ui.TemplateTitle;
 import com.zhitou.job.chat.adapters.ProfileSummaryAdapter;
 import com.zhitou.job.chat.model.GroupInfo;
 import com.zhitou.job.chat.model.GroupProfile;

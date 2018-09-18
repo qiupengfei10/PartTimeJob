@@ -13,8 +13,8 @@ import com.tencent.imsdk.TIMValueCallBack;
 import com.tencent.imsdk.ext.sns.TIMFriendResult;
 import com.tencent.imsdk.ext.sns.TIMFutureFriendType;
 import com.tencent.qcloud.presentation.presenter.FriendshipManagerPresenter;
-import com.tencent.qcloud.ui.CircleImageView;
 import com.zhitou.job.R;
+import com.tencent.qcloud.ui.CircleImageView;
 import com.zhitou.job.chat.model.FriendFuture;
 
 import java.util.List;

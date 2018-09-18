@@ -20,9 +20,9 @@ import com.tencent.imsdk.ext.group.TIMGroupManagerExt;
 import com.tencent.qcloud.presentation.presenter.GroupInfoPresenter;
 import com.tencent.qcloud.presentation.presenter.GroupManagerPresenter;
 import com.tencent.qcloud.presentation.viewfeatures.GroupInfoView;
+import com.zhitou.job.R;
 import com.tencent.qcloud.ui.LineControllerView;
 import com.tencent.qcloud.ui.ListPickerDialog;
-import com.zhitou.job.R;
 import com.zhitou.job.chat.model.GroupInfo;
 import com.zhitou.job.chat.model.UserInfo;
 

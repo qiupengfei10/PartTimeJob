@@ -10,8 +10,8 @@ import android.widget.Toast;
 import com.tencent.imsdk.TIMCallBack;
 import com.tencent.imsdk.TIMFileElem;
 import com.tencent.imsdk.TIMMessage;
-import com.zhitou.job.MyApplication;
 import com.zhitou.job.R;
+import com.zhitou.job.MyApplication;
 import com.zhitou.job.chat.adapters.ChatAdapter;
 import com.zhitou.job.chat.utils.FileUtil;
 

@@ -6,8 +6,8 @@ import android.view.View;
 import com.tencent.imsdk.TIMGroupMemberInfo;
 import com.tencent.imsdk.TIMGroupTipsElem;
 import com.tencent.imsdk.TIMMessage;
-import com.zhitou.job.MyApplication;
 import com.zhitou.job.R;
+import com.zhitou.job.MyApplication;
 import com.zhitou.job.chat.adapters.ChatAdapter;
 
 import java.util.Iterator;

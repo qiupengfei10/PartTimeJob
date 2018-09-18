@@ -14,10 +14,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zhitou.job.R;
 import com.tencent.rtmp.ugc.TXRecordCommon;
 import com.tencent.rtmp.ugc.TXUGCRecord;
 import com.tencent.rtmp.ui.TXCloudVideoView;
-import com.zhitou.job.R;
 import com.zhitou.job.chat.ui.customview.BeautyDialogFragment;
 import com.zhitou.job.chat.utils.TCUtils;
 

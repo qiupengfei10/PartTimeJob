@@ -15,8 +15,8 @@ import com.tencent.imsdk.TIMMessage;
 import com.tencent.imsdk.TIMSnapshot;
 import com.tencent.imsdk.TIMVideo;
 import com.tencent.imsdk.TIMVideoElem;
-import com.zhitou.job.MyApplication;
 import com.zhitou.job.R;
+import com.zhitou.job.MyApplication;
 import com.zhitou.job.chat.adapters.ChatAdapter;
 import com.zhitou.job.chat.ui.VideoActivity;
 import com.zhitou.job.chat.utils.FileUtil;
@@ -159,7 +159,7 @@ public class VideoMessage extends Message {
     /**
      * 显示缩略图
      */
-    private void showSnapshot(final ChatAdapter.ViewHolder viewHolder,final Bitmap bitmap){
+    private void showSnapshot(final ChatAdapter.ViewHolder viewHolder, final Bitmap bitmap){
         if (bitmap == null) return;
         ImageView imageView = new ImageView(MyApplication.getContext());
         imageView.setImageBitmap(bitmap);
@@ -173,7 +173,7 @@ public class VideoMessage extends Message {
         context.startActivity(intent);
     }
 
-    private void setVideoEvent(final ChatAdapter.ViewHolder viewHolder, final String fileName,final Context context){
+    private void setVideoEvent(final ChatAdapter.ViewHolder viewHolder, final String fileName, final Context context){
         getBubbleView(viewHolder).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

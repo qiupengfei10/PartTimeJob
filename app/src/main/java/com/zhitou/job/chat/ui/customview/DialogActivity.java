@@ -9,10 +9,12 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
+import com.huawei.android.pushagent.PushManager;
 import com.tencent.imsdk.TIMCallBack;
 import com.tencent.qcloud.presentation.business.LoginBusiness;
-import com.tencent.qcloud.tlslibrary.service.TlsBusiness;
 import com.zhitou.job.R;
+import com.tencent.qcloud.tlslibrary.service.TlsBusiness;
+import com.xiaomi.mipush.sdk.MiPushClient;
 import com.zhitou.job.chat.model.FriendshipInfo;
 import com.zhitou.job.chat.model.GroupInfo;
 import com.zhitou.job.chat.model.UserInfo;
@@ -52,11 +54,11 @@ public class DialogActivity extends Activity implements View.OnClickListener {
                         Toast.makeText(DialogActivity.this, getString(R.string.login_succ), Toast.LENGTH_SHORT).show();
                         String deviceMan = android.os.Build.MANUFACTURER;
                         //注册小米和华为推送
-//                        if (deviceMan.equals("Xiaomi") && shouldMiInit()){
-//                            MiPushClient.registerPush(getApplicationContext(), "2882303761517480335", "5411748055335");
-//                        }else if (deviceMan.equals("HUAWEI")){
-//                            PushManager.requestToken(getApplicationContext());
-//                        }
+                        if (deviceMan.equals("Xiaomi") && shouldMiInit()){
+                            MiPushClient.registerPush(getApplicationContext(), "2882303761517480335", "5411748055335");
+                        }else if (deviceMan.equals("HUAWEI")){
+                            PushManager.requestToken(getApplicationContext());
+                        }
                         finish();
                     }
                 });

@@ -8,8 +8,8 @@ import android.widget.CompoundButton;
 import com.tencent.imsdk.TIMManager;
 import com.tencent.imsdk.TIMOfflinePushSettings;
 import com.tencent.imsdk.TIMValueCallBack;
-import com.tencent.qcloud.ui.LineControllerView;
 import com.zhitou.job.R;
+import com.tencent.qcloud.ui.LineControllerView;
 
 public class MessageNotifySettingActivity extends Activity {
 
@@ -20,7 +20,7 @@ public class MessageNotifySettingActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_notify_setting);
-        final Uri notifyMusic = Uri.parse("android.resource://com.tencent.qcloud.timchat/" + R.raw.dudulu);
+        final Uri notifyMusic = Uri.parse("android.resource://com.zhitou.job/" + R.raw.dudulu);
         TIMManager.getInstance().getOfflinePushSettings(new TIMValueCallBack<TIMOfflinePushSettings>() {
             @Override
             public void onError(int i, String s) {

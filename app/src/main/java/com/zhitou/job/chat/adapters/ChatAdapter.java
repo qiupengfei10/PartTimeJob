@@ -10,7 +10,6 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-
 import com.zhitou.job.R;
 import com.zhitou.job.chat.model.Message;
 

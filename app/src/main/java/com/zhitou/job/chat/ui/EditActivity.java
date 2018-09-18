@@ -10,8 +10,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.tencent.imsdk.TIMCallBack;
-import com.tencent.qcloud.ui.TemplateTitle;
 import com.zhitou.job.R;
+import com.tencent.qcloud.ui.TemplateTitle;
 
 /**
  * 修改文本页面

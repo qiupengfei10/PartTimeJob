@@ -14,8 +14,8 @@ import com.tencent.imsdk.TIMCallBack;
 import com.tencent.imsdk.ext.group.TIMGroupPendencyGetType;
 import com.tencent.imsdk.ext.group.TIMGroupPendencyHandledStatus;
 import com.tencent.imsdk.ext.group.TIMGroupPendencyItem;
-import com.tencent.qcloud.ui.CircleImageView;
 import com.zhitou.job.R;
+import com.tencent.qcloud.ui.CircleImageView;
 import com.zhitou.job.chat.model.GroupFuture;
 import com.zhitou.job.chat.model.UserInfo;
 

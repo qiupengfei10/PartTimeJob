@@ -16,8 +16,8 @@ import android.widget.Toast;
 
 import com.tencent.imsdk.TIMManager;
 import com.tencent.qcloud.presentation.event.MessageEvent;
-import com.tencent.qcloud.tlslibrary.service.TlsBusiness;
 import com.zhitou.job.R;
+import com.tencent.qcloud.tlslibrary.service.TlsBusiness;
 import com.zhitou.job.chat.model.FriendshipInfo;
 import com.zhitou.job.chat.model.GroupInfo;
 import com.zhitou.job.chat.model.UserInfo;
@@ -42,7 +42,7 @@ public class HomeActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_home_new);
         if (requestPermission()) {
             Intent intent = new Intent(HomeActivity.this,SplashActivity.class);
             finish();

@@ -33,7 +33,7 @@ import com.tencent.imsdk.TIMManager;
 import com.tencent.imsdk.TIMOfflinePushListener;
 import com.tencent.imsdk.TIMOfflinePushNotification;
 import com.tencent.qalsdk.sdk.MsfSdkUtils;
-import com.umeng.socialize.utils.UmengText;
+import com.tencent.qcloud.tlslibrary.service.TlsBusiness;
 import com.zhitou.job.chat.utils.Foreground;
 import com.zhitou.job.main.utils.PicassoImageLoader;
 import com.zhitou.job.parttimejob.been.MyUser;
@@ -81,6 +81,7 @@ public class MyApplication extends Application{
     }
 
     private void initChat() {
+        TlsBusiness.init(getApplicationContext());
         Foreground.init(this);
         context = getApplicationContext();
         if(MsfSdkUtils.isMainProcess(this)) {

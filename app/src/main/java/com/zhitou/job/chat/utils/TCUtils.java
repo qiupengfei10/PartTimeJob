@@ -28,7 +28,6 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 
-
 import com.zhitou.job.R;
 
 import java.lang.ref.WeakReference;

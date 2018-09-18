@@ -8,8 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.tencent.qcloud.ui.CircleImageView;
 import com.zhitou.job.R;
+import com.tencent.qcloud.ui.CircleImageView;
 import com.zhitou.job.chat.model.ProfileSummary;
 
 import java.util.List;

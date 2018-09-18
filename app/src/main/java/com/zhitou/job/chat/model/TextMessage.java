@@ -18,8 +18,8 @@ import com.tencent.imsdk.TIMFaceElem;
 import com.tencent.imsdk.TIMMessage;
 import com.tencent.imsdk.TIMTextElem;
 import com.tencent.imsdk.ext.message.TIMMessageDraft;
-import com.zhitou.job.MyApplication;
 import com.zhitou.job.R;
+import com.zhitou.job.MyApplication;
 import com.zhitou.job.chat.adapters.ChatAdapter;
 import com.zhitou.job.chat.utils.EmoticonUtil;
 

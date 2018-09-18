@@ -5,8 +5,8 @@ import android.content.Context;
 import com.tencent.imsdk.TIMConversation;
 import com.tencent.imsdk.TIMConversationType;
 import com.tencent.imsdk.ext.message.TIMConversationExt;
-import com.zhitou.job.MyApplication;
 import com.zhitou.job.R;
+import com.zhitou.job.MyApplication;
 import com.zhitou.job.chat.ui.ChatActivity;
 
 /**
@@ -81,7 +81,7 @@ public class NomalConversation extends Conversation {
     @Override
     public String getName() {
         if (type == TIMConversationType.Group){
-            name=GroupInfo.getInstance().getGroupName(identify);
+            name= GroupInfo.getInstance().getGroupName(identify);
             if (name.equals("")) name = identify;
         }else{
             FriendProfile profile = FriendshipInfo.getInstance().getProfile(identify);

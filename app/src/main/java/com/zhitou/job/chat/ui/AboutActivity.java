@@ -11,9 +11,9 @@ import android.widget.Toast;
 import com.tencent.imsdk.TIMLogLevel;
 import com.tencent.imsdk.TIMManager;
 import com.tencent.qalsdk.QALSDKManager;
+import com.zhitou.job.R;
 import com.tencent.qcloud.ui.LineControllerView;
 import com.tencent.qcloud.ui.ListPickerDialog;
-import com.zhitou.job.R;
 
 import tencent.tls.platform.TLSHelper;
 

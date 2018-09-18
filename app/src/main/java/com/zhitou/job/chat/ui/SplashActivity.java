@@ -29,11 +29,11 @@ import com.tencent.qcloud.presentation.event.MessageEvent;
 import com.tencent.qcloud.presentation.event.RefreshEvent;
 import com.tencent.qcloud.presentation.presenter.SplashPresenter;
 import com.tencent.qcloud.presentation.viewfeatures.SplashView;
+import com.zhitou.job.R;
 import com.tencent.qcloud.tlslibrary.activity.HostLoginActivity;
 import com.tencent.qcloud.tlslibrary.service.TLSService;
 import com.tencent.qcloud.tlslibrary.service.TlsBusiness;
 import com.tencent.qcloud.ui.NotifyDialog;
-import com.zhitou.job.R;
 import com.zhitou.job.chat.model.UserInfo;
 import com.zhitou.job.chat.ui.customview.DialogActivity;
 import com.zhitou.job.chat.utils.PushUtil;
@@ -53,10 +53,7 @@ public class SplashActivity extends FragmentActivity implements SplashView,TIMCa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         clearNotification();
-
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
         final List<String> permissionsList = new ArrayList<>();
@@ -88,24 +85,24 @@ public class SplashActivity extends FragmentActivity implements SplashView,TIMCa
         //登录之前要初始化群和好友关系链缓存
         TIMUserConfig userConfig = new TIMUserConfig();
         userConfig.setUserStatusListener(new TIMUserStatusListener() {
-                    @Override
-                    public void onForceOffline() {
-                        Log.d(TAG, "receive force offline message");
-                        Intent intent = new Intent(SplashActivity.this, DialogActivity.class);
-                        startActivity(intent);
-                    }
+            @Override
+            public void onForceOffline() {
+                Log.d(TAG, "receive force offline message");
+                Intent intent = new Intent(SplashActivity.this, DialogActivity.class);
+                startActivity(intent);
+            }
 
+            @Override
+            public void onUserSigExpired() {
+                //票据过期，需要重新登录
+                new NotifyDialog().show(getString(R.string.tls_expire), getSupportFragmentManager(), new DialogInterface.OnClickListener() {
                     @Override
-                    public void onUserSigExpired() {
-                        //票据过期，需要重新登录
-                        new NotifyDialog().show(getString(R.string.tls_expire), getSupportFragmentManager(), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-    //                            logout();
-                            }
-                        });
+                    public void onClick(DialogInterface dialog, int which) {
+                        //                            logout();
                     }
-                })
+                });
+            }
+        })
                 .setConnectionListener(new TIMConnListener() {
                     @Override
                     public void onConnected() {
@@ -195,8 +192,8 @@ public class SplashActivity extends FragmentActivity implements SplashView,TIMCa
 //        }else if (deviceMan.equals("HUAWEI")){
 //            PushManager.requestToken(this);
 //        }
-//
-//        //魅族推送只适用于Flyme系统,因此可以先行判断是否为魅族机型，再进行订阅，避免在其他机型上出现兼容性问题
+
+        //魅族推送只适用于Flyme系统,因此可以先行判断是否为魅族机型，再进行订阅，避免在其他机型上出现兼容性问题
 //        if(MzSystemUtils.isBrandMeizu(getApplicationContext())){
 //            com.meizu.cloud.pushsdk.PushManager.register(this, "112662", "3aaf89f8e13f43d2a4f97a703c6f65b3");
 //        }
@@ -288,5 +285,4 @@ public class SplashActivity extends FragmentActivity implements SplashView,TIMCa
                 .getSystemService(NOTIFICATION_SERVICE);
         notificationManager.cancelAll();
 //        MiPushClient.clearNotification(getApplicationContext());
-    }
-}
+    }}

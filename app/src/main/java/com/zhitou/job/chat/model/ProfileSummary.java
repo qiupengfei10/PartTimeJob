@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.zhitou.job.chat.adapters.ProfileSummaryAdapter;
 
-
 /**
  * {@link ProfileSummaryAdapter}的数据元素,可提取获取资料的摘要
  */

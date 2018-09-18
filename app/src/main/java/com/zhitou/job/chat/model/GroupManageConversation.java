@@ -7,8 +7,8 @@ import android.util.Log;
 import com.tencent.imsdk.TIMCallBack;
 import com.tencent.imsdk.ext.group.TIMGroupPendencyItem;
 import com.tencent.qcloud.presentation.presenter.GroupManagerPresenter;
-import com.zhitou.job.MyApplication;
 import com.zhitou.job.R;
+import com.zhitou.job.MyApplication;
 import com.zhitou.job.chat.ui.GroupManageMessageActivity;
 
 import java.util.Calendar;
@@ -122,7 +122,7 @@ public class GroupManageConversation extends Conversation {
                             MyApplication.getContext().getResources().getString(R.string.summary_group_apply)+
                             GroupInfo.getInstance().getGroupName(lastMessage.getGroupId());
                 }else{
-                    return from+MyApplication.getContext().getResources().getString(R.string.summary_group_apply)+GroupInfo.getInstance().getGroupName(lastMessage.getGroupId());
+                    return from+MyApplication.getContext().getResources().getString(R.string.summary_group_apply)+ GroupInfo.getInstance().getGroupName(lastMessage.getGroupId());
                 }
 
             default:

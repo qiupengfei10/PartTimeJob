@@ -3,6 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.zhitou.job">
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- mi push -->
+    <permission
+        android:name="com.tencent.qcloud.timchat.permission.MIPUSH_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.tencent.qcloud.timchat.permission.MIPUSH_RECEIVE" />
+
+    <!--09-18 13:40:12.087 1918-1918/com.tencent.qcloud.timchat E/MSF.C.MsfCore: system load so library succ!-->
+    <!--09-18 13:40:12.518 1918-1918/com.tencent.qcloud.timchat E/QALSDKManager: init qal sdk,version:2.2.17.106265-->
+    <!--09-18 13:40:14.678 1918-1918/com.tencent.qcloud.timchat E/QALSDKManager: com.tencent.qcloud.timchat init qal sdk done!-->
+
+    <!--mz push-->
+    <!-- 兼容flyme5.0以下版本，魅族内部集成pushSDK必填，不然无法收到消息-->
+    <uses-permission android:name="com.meizu.flyme.push.permission.RECEIVE"></uses-permission>
+    <permission android:name="com.tencent.qcloud.timchat.push.permission.MESSAGE" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.tencent.qcloud.timchat.push.permission.MESSAGE"></uses-permission>
+
+    <!--  兼容flyme3.0配置权限-->
+    <uses-permission android:name="com.meizu.c2dm.permission.RECEIVE" />
+    <permission android:name="com.tencent.qcloud.timchat.permission.C2D_MESSAGE"
+        android:protectionLevel="signature"></permission>
+    <uses-permission android:name="com.tencent.qcloud.timchat.permission.C2D_MESSAGE"/>
+
+
     <!--支付相关的权限-->
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
@@ -62,6 +90,43 @@
             android:value="http://mjcos.com/Images/logo.png" />
 
         <!-- 聊天相关界面 -->
+        <!-- 消息收发service -->
+        <service
+            android:name="com.tencent.qalsdk.service.QalService"
+            android:exported="false"
+            android:process=":QALSERVICE" />
+        <service
+            android:name="com.tencent.qalsdk.service.QalAssistService"
+            android:exported="false"
+            android:process=":QALSERVICE" />
+        <!-- 离线消息广播接收器 -->
+        <receiver
+            android:name="com.tencent.qalsdk.QALBroadcastReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.tencent.qalsdk.broadcast.qal" />
+            </intent-filter>
+        </receiver>
+        <!-- 系统消息广播接收器 -->
+        <receiver
+            android:name="com.tencent.qalsdk.core.NetConnInfoCenter"
+            android:process=":QALSERVICE">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.qalsdk.service.TASK_REMOVED" />
+            </intent-filter>
+        </receiver>
 
         <activity
             android:name=".chat.ui.SplashActivity"

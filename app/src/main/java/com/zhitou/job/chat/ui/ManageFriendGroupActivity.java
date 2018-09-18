@@ -20,8 +20,8 @@ import com.tencent.imsdk.TIMValueCallBack;
 import com.tencent.imsdk.ext.sns.TIMFriendResult;
 import com.tencent.qcloud.presentation.event.FriendshipEvent;
 import com.tencent.qcloud.presentation.presenter.FriendshipManagerPresenter;
-import com.tencent.qcloud.ui.NotifyDialog;
 import com.zhitou.job.R;
+import com.tencent.qcloud.ui.NotifyDialog;
 import com.zhitou.job.chat.adapters.GroupListAdapter;
 import com.zhitou.job.chat.model.FriendshipInfo;
 

@@ -12,8 +12,8 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.tencent.qcloud.ui.TemplateTitle;
 import com.zhitou.job.R;
+import com.tencent.qcloud.ui.TemplateTitle;
 
 import java.io.File;
 import java.io.IOException;

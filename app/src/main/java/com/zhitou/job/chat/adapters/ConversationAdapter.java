@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.tencent.qcloud.ui.CircleImageView;
 import com.zhitou.job.R;
+import com.tencent.qcloud.ui.CircleImageView;
 import com.zhitou.job.chat.model.Conversation;
 import com.zhitou.job.chat.utils.TimeUtil;
 

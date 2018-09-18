@@ -13,10 +13,10 @@ import com.tencent.imsdk.ext.sns.TIMFriendResult;
 import com.tencent.imsdk.ext.sns.TIMFriendStatus;
 import com.tencent.qcloud.presentation.presenter.FriendshipManagerPresenter;
 import com.tencent.qcloud.presentation.viewfeatures.FriendshipManageView;
+import com.zhitou.job.R;
 import com.tencent.qcloud.ui.LineControllerView;
 import com.tencent.qcloud.ui.ListPickerDialog;
 import com.tencent.qcloud.ui.NotifyDialog;
-import com.zhitou.job.R;
 import com.zhitou.job.chat.model.FriendshipInfo;
 
 import java.util.Collections;

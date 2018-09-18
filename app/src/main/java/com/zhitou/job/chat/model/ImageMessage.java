@@ -16,8 +16,8 @@ import com.tencent.imsdk.TIMImage;
 import com.tencent.imsdk.TIMImageElem;
 import com.tencent.imsdk.TIMImageType;
 import com.tencent.imsdk.TIMMessage;
-import com.zhitou.job.MyApplication;
 import com.zhitou.job.R;
+import com.zhitou.job.MyApplication;
 import com.zhitou.job.chat.adapters.ChatAdapter;
 import com.zhitou.job.chat.ui.ImageViewActivity;
 import com.zhitou.job.chat.utils.FileUtil;
@@ -200,14 +200,14 @@ public class ImageMessage extends Message {
         }
     }
 
-    private void showThumb(final ChatAdapter.ViewHolder viewHolder,String filename){
+    private void showThumb(final ChatAdapter.ViewHolder viewHolder, String filename){
         Bitmap bitmap = BitmapFactory.decodeFile(FileUtil.getCacheFilePath(filename));
         ImageView imageView = new ImageView(MyApplication.getContext());
         imageView.setImageBitmap(bitmap);
         getBubbleView(viewHolder).addView(imageView);
     }
 
-    private void setImageEvent(final ChatAdapter.ViewHolder viewHolder, final String fileName,final Context context){
+    private void setImageEvent(final ChatAdapter.ViewHolder viewHolder, final String fileName, final Context context){
         getBubbleView(viewHolder).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
